@@ -1,23 +1,11 @@
-import {ProjectsContext } from "../contexts/projectsContext"
+import {PlanDashContext} from "../contexts/PlanDashContext"
 import {useContext} from 'react'
 
 const Project = () => {
-  const {projects,newProject} = useContext(ProjectsContext)! 
-  const scope = 'lkjhhjk'
-  const title = 'lkjhg'
-
-  newProject({scope, title})
+  const {projects,newProject} = useContext(PlanDashContext)! 
 
   return (
-    <div>{
-      projects && projects.map((project,index)=>(
-        <div key={index}>
-          <p>{project.scope}</p>
-          <p>{project.title}</p>
-        </div>
-      ))
-      }
-    </div>
+  
   )
 }
 
