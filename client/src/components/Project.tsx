@@ -1,6 +1,5 @@
-import {PlanDashContext} from "../contexts/PlanDashContext"
-import {useContext} from 'react'
 import { IProject } from "../types/project.types"
+// import {useContext} from 'react'
 
 const Project:React.FC<{project: IProject}> = ({project}) => {
 
