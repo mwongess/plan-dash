@@ -15,7 +15,7 @@ END
 -- 
 CREATE PROCEDURE NewProject
     @projectId VARCHAR(200),
-    @title VARCHAR(200),
+    @title VARCHAR(50),
     @scope VARCHAR(200),
     @description VARCHAR(200),
 AS

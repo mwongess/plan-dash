@@ -26,3 +26,11 @@ AS
 BEGIN 
     SELECT * FROM users WHERE userId = @userId;
 END;
+
+-- 
+CREATE PROCEDURE GetNotAssigned
+AS
+BEGIN
+    SELECT * FROM users WHERE userId = null;
+END;
+-- 
