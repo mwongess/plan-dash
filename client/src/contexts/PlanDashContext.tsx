@@ -4,13 +4,13 @@ import {
   updateProject,
 } from "../actions/project.actions";
 import { IProject, IProjectsContextType } from "../types/project.types";
-import React, { ReactNode, createContext, useState } from "react";
+import React, { ReactNode, createContext, useContext, useState } from "react";
 
-// Custom Hook to access all context stuff
 export const PlanDashContext = createContext<IProjectsContextType | undefined>(
   undefined
 );
 
+export const usePlanDashContext = () => useContext(PlanDashContext)
 // Provider
 export const PlanDashProvider: React.FC<{ children: ReactNode }> = ({
   children,
