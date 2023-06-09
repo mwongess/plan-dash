@@ -12,7 +12,7 @@ BEGIN
 END;
 
 -- 
-CREATE PROCEDURE GetProjects
+CREATE PROCEDURE GetProject
     @projectId VARCHAR(200)
 AS
 BEGIN

@@ -24,7 +24,7 @@ export class Connection {
   //   We will call this function through this class whenever we want to query using a procedure
   async executeProcedure(
     procedureName: string,
-    params: { [x: string]: string }
+    params?: { [x: string]: string }
   ) {
     let pool = await this.pool;
     let request = pool.request();

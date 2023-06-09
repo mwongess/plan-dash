@@ -8,15 +8,16 @@ export interface ISignupRequest extends Request {
   };
 }
 
-export interface ILoginRequest extends Request{
-    body: {
-        email: string
-        password: string
-    }
+export interface ILoginRequest extends Request {
+  body: {
+    email: string;
+    password: string;
+  };
 }
 
 export interface IUser {
-    name: string
-    email: string
-    password: string
+  userId: string | number
+  name: string;
+  email: string;
+  password: string;
 }
