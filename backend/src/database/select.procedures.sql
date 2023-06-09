@@ -20,11 +20,11 @@ BEGIN
 END;
 
 -- 
-CREATE PROCEDURE GetUsers
-    @userId VARCHAR(200)
+CREATE PROCEDURE GetUser
+    @email VARCHAR(200)
 AS
 BEGIN 
-    SELECT * FROM users WHERE userId = @userId;
+    SELECT * FROM users WHERE email = @email;
 END;
 
 -- 

@@ -3,7 +3,6 @@ CREATE PROCEDURE NewUser
     @userId VARCHAR(200),
     @name VARCHAR(200),
     @email VARCHAR(200),
-    @email VARCHAR(200),
     @password VARCHAR(200),
     @confirmPassword VARCHAR(200)
 AS

@@ -7,7 +7,7 @@ export const sqlConfig = {
     server: process.env.SERVER as string,
     database: 'plandash',
     options: {
-        encrypt: true,
-        trustServerCertificate: false
+        encrypt: false,
+        trustServerCertificate: true
     }
 }
