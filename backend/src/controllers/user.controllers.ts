@@ -1,12 +1,11 @@
 import { ILoginRequest, ISignupRequest, IUser } from "../types/user.types";
 import { Connection } from "../helpers/db.helpers";
-import jwt from "jsonwebtoken";
 import { Response } from "express";
 import { v4 as uuid } from "uuid";
-
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-
 import dotenv from "dotenv";
+import { LoginSchema, SignUpSchema } from "../schemas/auth.schemas";
 dotenv.config();
 
 const db = new Connection();
@@ -14,8 +13,11 @@ const db = new Connection();
 export const SignupNewUser = async (req: ISignupRequest, res: Response) => {
   try {
     const userId = uuid();
-    let { name, email, password, confirmPassword } = req.body;
-    console.log(name, email);
+    let { name, email, password } = req.body;
+    const { error, value } = SignUpSchema.validate(req.body);
+    if (error) {
+      return res.status(500).json({ error: error.details[0].message });
+    }
     const { recordset } = await db.executeProcedure("GetUser", { email });
     if (recordset.length > 0) {
       return res.json({ error: "Account already exists" });
@@ -26,9 +28,8 @@ export const SignupNewUser = async (req: ISignupRequest, res: Response) => {
       name,
       email,
       password,
-      confirmPassword,
     });
-    res.json({ message: "Account created" });
+    res.json({ message: "Account created successfully" });
   } catch (error) {
     res.json({ error: error });
   }
@@ -36,7 +37,11 @@ export const SignupNewUser = async (req: ISignupRequest, res: Response) => {
 
 export const LoginExistingUser = async (req: ILoginRequest, res: Response) => {
   try {
-    let { email, password } = await req.body;
+    let { email, password } = req.body;
+    const { error, value } = LoginSchema.validate(req.body);
+    if (error) {
+      return res.status(500).json({ error: error.details[0].message });
+    }
     const user: IUser[] = (await db.executeProcedure("GetUser", { email }))
       .recordset;
     !user[0] ? res.json({ error: "Account doesnt exist" }) : null;
@@ -44,7 +49,7 @@ export const LoginExistingUser = async (req: ILoginRequest, res: Response) => {
     !validpassword ? res.json({ error: "Try another password" }) : null;
 
     const payload = user.map((item) => {
-      const { password, confirmPassword, ...rest } = item;
+      const { password, ...rest } = item;
       return rest;
     });
     console.log(payload);
