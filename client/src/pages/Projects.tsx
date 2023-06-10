@@ -1,7 +1,7 @@
+import { FaListOl, FaTable, FaToriiGate } from "react-icons/fa";
 import { getProjects } from "../actions/project.actions";
 import { IProject } from "../types/project.types";
 import { useQuery } from "@tanstack/react-query";
-import Project from "../components/Project";
 import { Link, Outlet } from "react-router-dom";
 
 const Projects = () => {
@@ -10,10 +10,10 @@ const Projects = () => {
   // return data?.map((project: IProject) => <Project project={project} />);
   return (
     <div>
-      <div className="flex  gap-x-6 border-b border-[#393649] pb-3">
-        <Link to="/">Board</Link>
-        <Link to="/table">Table</Link>
-        <Link to="/list">List View</Link>
+      <div className="flex  gap-x-8 border-b border-[#393649] pb-3">
+        <Link to="/" className="flex items-center gap-2 bg-[#2b283d] rounded p-1"><FaToriiGate/>Board</Link>
+        <Link to="/table" className="flex items-center gap-2 bg-[#2b283d] rounded p-1"><FaTable/>Table</Link>
+        <Link to="/list" className="flex items-center gap-2 bg-[#2b283d] rounded p-1"><FaListOl/>List View</Link>
       </div>
       <div>
         <Outlet/>
