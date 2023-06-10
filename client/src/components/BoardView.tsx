@@ -1,6 +1,5 @@
 import { FaCircle, FaPlusCircle } from "react-icons/fa";
 import { VscKebabVertical } from "react-icons/vsc";
-import Project from "./Project";
 
 const BoardView = () => {
   return (
@@ -11,7 +10,7 @@ const BoardView = () => {
             <p className="text-[#eb3983] rounded-full text-xs ">
               <FaCircle />
             </p>
-            <h3>New Task()</h3>
+            <h3>New Task(0)</h3>
           </div>
           <p className="text-[#eb3983] text-2xl">
             <FaPlusCircle className="cursor-pointer" />
@@ -25,7 +24,7 @@ const BoardView = () => {
             <p className="text-[#fab52d] rounded-full text-xs ">
               <FaCircle />
             </p>
-            <h3>On Progress()</h3>
+            <h3>On Progress(13)</h3>
           </div>
           <p className="text-[#fab52d] text-2xl">
             <FaPlusCircle  className="cursor-pointer"/>
@@ -38,7 +37,7 @@ const BoardView = () => {
             <p className="text-[#1bd331] rounded-full text-xs ">
               <FaCircle />
             </p>
-            <h3>On Review()</h3>
+            <h3>On Review(43)</h3>
           </div>
           <p className="text-[#1bd331] text-2xl">
             <FaPlusCircle className="cursor-pointer" />
@@ -72,7 +71,7 @@ const BoardView = () => {
             <p className=" rounded-full text-xs ">
               <FaCircle />
             </p>
-            <h3>Complete()</h3>
+            <h3>Complete(78)</h3>
           </div>
           <p className="text-2xl">
             <FaPlusCircle className="cursor-pointer"/>
