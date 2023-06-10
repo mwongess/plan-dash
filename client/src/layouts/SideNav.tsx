@@ -2,7 +2,7 @@ import { FaPlus } from "react-icons/fa";
 
 const SideNav = () => {
   return (
-    <div className="h-full ">
+    <div className="h-[95vh]">
       <div className=" flex md:flex-col md:justify-between h-full px-2">
         <input
           className="bg-[#2b283d] p-2 rounded"
