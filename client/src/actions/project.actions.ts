@@ -1,9 +1,9 @@
 import { IProject } from "../types/project.types";
 
-import dotenv from "dotenv";
-dotenv.config();
+// import dotenv from "dotenv";
+// dotenv.config();
 
-const URL = process.env.BASE_URL!; //Backend API
+const URL = ''; //Backend API
 
 // START FETCHING PROJECTS
 export const getProjects = async (): Promise<IProject[]> => {
@@ -31,7 +31,9 @@ export const newProject = async (project: IProject): Promise<IProject> => {
 //END
 
 //START UPDATE PROJECT
-export const updateProject = async (id: string | number) => {};
+export const updateProject = async (id: string | number) => {
+  return ''
+};
 //END
 
 //START DELETE PROJECT

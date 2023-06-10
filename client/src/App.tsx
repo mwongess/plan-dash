@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PlanDashProvider } from "./contexts/PlanDashContext";
-import Project from "./components/Project";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/routes";
 import "./App.css";
 
 const queryClient = new QueryClient();
@@ -10,7 +11,7 @@ function App() {
     <>
       <PlanDashProvider>
         <QueryClientProvider client={queryClient}>
-          <Project />
+        <RouterProvider router={router} />
         </QueryClientProvider>
       </PlanDashProvider>
     </>
