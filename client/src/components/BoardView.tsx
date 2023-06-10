@@ -14,7 +14,7 @@ const BoardView = () => {
             <h3>New Task()</h3>
           </div>
           <p className="text-[#eb3983] text-2xl">
-            <FaPlusCircle className="" />
+            <FaPlusCircle className="cursor-pointer" />
           </p>
         </div>
         <div></div>
@@ -28,7 +28,7 @@ const BoardView = () => {
             <h3>On Progress()</h3>
           </div>
           <p className="text-[#fab52d] text-2xl">
-            <FaPlusCircle />
+            <FaPlusCircle  className="cursor-pointer"/>
           </p>
         </div>
       </div>
@@ -41,7 +41,7 @@ const BoardView = () => {
             <h3>On Review()</h3>
           </div>
           <p className="text-[#1bd331] text-2xl">
-            <FaPlusCircle className="" />
+            <FaPlusCircle className="cursor-pointer" />
           </p>
         </div>
         <div className="m-3 p-3 bg-[#29253d] rounded-lg">
@@ -55,7 +55,7 @@ const BoardView = () => {
             </p>
           </div>
           <div >
-            <h4 className="my-2">Lorem ipsum dolor sit amet.</h4>
+            <h4 className="my-2 font-bold">Lorem ipsum dolor sit amet.</h4>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
               ducimus saepe cumque quis similique ut pariatur deserunt a
@@ -75,7 +75,7 @@ const BoardView = () => {
             <h3>Complete()</h3>
           </div>
           <p className="text-2xl">
-            <FaPlusCircle />
+            <FaPlusCircle className="cursor-pointer"/>
           </p>
         </div>
       </div>
