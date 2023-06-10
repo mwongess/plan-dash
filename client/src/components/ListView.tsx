@@ -1,5 +1,5 @@
 export const ListView = () => {
   return (
-    <div>ListView</div>
+    <div>COMING SOON!</div>
   )
 }

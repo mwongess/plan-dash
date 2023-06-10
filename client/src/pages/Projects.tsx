@@ -10,13 +10,13 @@ const Projects = () => {
   // return data?.map((project: IProject) => <Project project={project} />);
   return (
     <div>
-      <div>
-        <Link to="">Board</Link>
-        <Link to="">Table</Link>
-        <Link to="">List View</Link>
+      <div className="flex  gap-x-6 border-b border-[#393649] pb-3">
+        <Link to="/">Board</Link>
+        <Link to="/table">Table</Link>
+        <Link to="/list">List View</Link>
       </div>
       <div>
-        {/* <Outlet/> */}
+        <Outlet/>
       </div>
     </div>
   );
