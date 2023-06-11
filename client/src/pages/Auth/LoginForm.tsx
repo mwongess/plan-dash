@@ -22,24 +22,24 @@ export const LoginForm = () => {
         <img src="/se.png" alt="" />
       </div>
       <form className="w-[50%] flex items-center justify-center" onSubmit={handleSubmit(onSubmitHandler)}>
-        <div>
+        <div className="w-[50%]">
           <div>
             <h1 className="font-bold mb-[1rem]">Welcome Back</h1>
           </div>
           <div className="mb-[1rem]">
-            <input className="border border-[#393649] w-full px-4" type="text" placeholder="Email" {...register("email")} />
+            <input className="border border-[#393649] w-full h-[2rem] px-4" type="text" placeholder="Email" {...register("email")} />
             <p className="text-red-500">{errors.email?.message}</p>
           </div>
           <div className="mb-[1rem]">
             <input
-            className="border border-[#393649] w-full px-4"
+            className="border border-[#393649] w-full h-[2rem] px-4"
               type="text"
               placeholder="Password"
               {...register("password")}
             />
             <p className="text-red-500">{errors.password?.message}</p>
           </div>
-          <button className="w-full mb-[1rem] bg-[#4b95d6] hover:opacity-90 text-white rounded h-[1.8rem]">Login</button>
+          <button className="w-full mb-[1rem] bg-[#4b95d6] hover:opacity-90 text-white rounded h-[2rem]">Login</button>
           <div>
             <span>
               Or SignUp <Link to="/auth/signup" className="">here</Link>

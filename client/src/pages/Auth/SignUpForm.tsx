@@ -24,13 +24,13 @@ export const SignUp = () => {
         onSubmit={handleSubmit(onSubmitHandler)}
         className="flex flex-col items-center justify-center w-[50%] h-full"
       >
-        <div>
+        <div className="w-[50%]">
           <div>
             <h1 className="font-bold mb-2">Welcome Folk</h1>
           </div>
           <div className="mb-[1rem]">
             <input
-              className="bg-transparent border border-[#393649] w-full px-4"
+              className="bg-transparent border border-[#393649] w-full h-[2rem] px-4"
               type="text"
               placeholder="Name"
               {...register("name")}
@@ -39,7 +39,7 @@ export const SignUp = () => {
           </div>
           <div className="mb-[1rem]">
             <input
-              className="bg-transparent border border-[#393649] w-full px-4"
+              className="bg-transparent border border-[#393649] w-full h-[2rem] px-4"
               type="text"
               placeholder="Email"
               {...register("email")}
@@ -48,7 +48,7 @@ export const SignUp = () => {
           </div>
           <div className="mb-[1rem]">
             <input
-              className="bg-transparent border border-[#393649]  w-full px-4"
+              className="bg-transparent border border-[#393649]  w-full px-4 h-[2rem]"
               type="text"
               placeholder="Password"
               {...register("password")}
@@ -57,14 +57,14 @@ export const SignUp = () => {
           </div>
           <div className="mb-[1rem]">
             <input
-              className="bg-transparent border border-[#393649] w-full  px-4"
+              className="bg-transparent border border-[#393649] w-full   h-[2rem] px-4"
               type="text"
               placeholder="Confirm Password"
               {...register("confirmPassword")}
             />
             <p className="text-red-500">{errors.confirmPassword?.message}</p>
           </div>
-          <button className="border-none bg-[#4b95d6] hover:opacity-90 text-white h-[1.8rem] w-full mb-2 rounded">
+          <button className="border-none bg-[#4b95d6] hover:opacity-90 text-white h-[2rem] w-full mb-2 rounded">
             Sign Up
           </button>
           <div>
