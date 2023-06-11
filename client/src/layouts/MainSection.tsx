@@ -14,7 +14,7 @@ const MainSection = () => {
               <div className="flex items-center gap-2">
                 <img
                   onClick={() => setShow(!show)}
-                  className="h-[2.5rem] rounded-full cursor-pointer hover:border hover:border-[#4099ff]"
+                  className="h-[2.5rem] rounded-full cursor-pointer hover:border-2 hover:border-[#4099ff]"
                   src="https://w7.pngwing.com/pngs/481/915/png-transparent-computer-icons-user-avatar-woman-avatar-computer-business-conversation-thumbnail.png"
                   alt=""
                 />
@@ -25,7 +25,7 @@ const MainSection = () => {
                 <div className="border border-[#393649] rounded p-2 mt-[0.5rem] ml-[1rem]">
                   <p className="cursor-pointer">amosmwongelah@gmail.com</p>
                   <p className="cursor-pointer">User Settings</p>
-                  <p className="cursor-pointer text-red-500">Sign Out</p>
+                  <p className="cursor-pointer text-red-500"><Link to='/auth/login'>Sign Out</Link></p>
                 </div>
               )}
             </div>

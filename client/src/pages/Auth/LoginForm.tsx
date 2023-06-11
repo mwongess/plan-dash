@@ -17,21 +17,31 @@ export const LoginForm = () => {
   });
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmitHandler)}>
+    <div className="h-screen flex ">
+      <div className="w-[50%] flex items-center justify-center bg-[#03103c]" >
+        <img src="/se.png" alt="" />
+      </div>
+      <form className="w-[50%] flex items-center justify-center" onSubmit={handleSubmit(onSubmitHandler)}>
         <div>
-          <input type="text" placeholder="Email" {...register("email")} />
-          <p>{errors.email?.message}</p>
-        </div>
-        <div>
-          <input type="text" placeholder="Password" {...register("password")} />
-          <p>{errors.password?.message}</p>
-        </div>
-        <button>Login</button>
-        <div>
-          <span>
-            Or SignUp <Link to="/signup">here</Link>
-          </span>
+          <div>
+            <input className="border border-[#393649] mb-[1rem] px-4" type="text" placeholder="Email" {...register("email")} />
+            <p>{errors.email?.message}</p>
+          </div>
+          <div>
+            <input
+            className="border border-[#393649] mb-[1rem] px-4"
+              type="text"
+              placeholder="Password"
+              {...register("password")}
+            />
+            <p>{errors.password?.message}</p>
+          </div>
+          <button className="w-full mb-[1rem] bg-[#4b95d6] text-white rounded h-[1.8rem]">Login</button>
+          <div>
+            <span>
+              Or SignUp <Link to="/auth/signup" className="">here</Link>
+            </span>
+          </div>
         </div>
       </form>
     </div>

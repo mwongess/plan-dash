@@ -16,33 +16,60 @@ export const SignUp = () => {
   });
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmitHandler)}>
+    <div className="flex justify-center items-center  h-screen">
+      <div className="h-full w-[50%] bg-[#03103c] flex items-center justify-center">
+        <img src="/se.png" alt="" className=" object-contain" />
+      </div>
+      <form
+        onSubmit={handleSubmit(onSubmitHandler)}
+        className="flex flex-col items-center justify-center w-[50%] h-full"
+      >
         <div>
-          <input type="text" placeholder="Name" {...register("name")} />
-          <p>{errors.name?.message}</p>
-        </div>
-        <div>
-          <input type="text" placeholder="Email" {...register("email")} />
-          <p>{errors.email?.message}</p>
-        </div>
-        <div>
-          <input type="text" placeholder="Password" {...register("password")} />
-          <p>{errors.password?.message}</p>
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Confirm Password"
-            {...register("confirmPassword")}
-          />
-          <p>{errors.confirmPassword?.message}</p>
-        </div>
-        <button>Sign Up</button>
-        <div>
-          <span>
-            Or Login <Link to="/login">here</Link>
-          </span>
+          <div>
+            <h1 className="font-bold mb-2">Welcome Folk</h1>
+          </div>
+          <div>
+            <input
+              className="bg-transparent border border-[#393649] mb-[1rem] px-4"
+              type="text"
+              placeholder="Name"
+              {...register("name")}
+            />
+            <p>{errors.name?.message}</p>
+          </div>
+          <div>
+            <input
+              className="bg-transparent border border-[#393649] mb-[1rem] px-4"
+              type="text"
+              placeholder="Email"
+              {...register("email")}
+            />
+            <p>{errors.email?.message}</p>
+          </div>
+          <div>
+            <input
+              className="bg-transparent border border-[#393649] mb-[1rem] px-4"
+              type="text"
+              placeholder="Password"
+              {...register("password")}
+            />
+            <p>{errors.password?.message}</p>
+          </div>
+          <div>
+            <input
+              className="bg-transparent border border-[#393649] mb-[1rem] px-4"
+              type="text"
+              placeholder="Confirm Password"
+              {...register("confirmPassword")}
+            />
+            <p>{errors.confirmPassword?.message}</p>
+          </div>
+          <button className="border-none bg-[#4b95d6] text-white h-[1.8rem] w-full mb-2 rounded">Sign Up</button>
+          <div>
+            <span>
+              Or Login <Link to="/auth/login">here</Link>
+            </span>
+          </div>
         </div>
       </form>
     </div>
