@@ -1,15 +1,15 @@
 import { TableView } from "../components/TableView";
+import { LoginForm } from "../pages/Auth/LoginForm";
+import { SignUp } from "../pages/Auth/SignUpForm";
 import { ListView } from "../components/ListView";
 import BoardView from "../components/BoardView";
 import Dashboard from "../layouts/Dashboard";
+import Landing from "../pages/Landing";
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { LoginForm } from "../pages/Auth/LoginForm";
-import { SignUp } from "../pages/Auth/SignUpForm";
-import Landing from "../pages/Landing";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

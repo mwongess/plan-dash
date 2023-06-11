@@ -24,7 +24,7 @@ const SideNav = () => {
           <h3>ARCHIVES</h3>
         </div>
         <div>
-          <button className="bg-green-600 py-1 px-2 rounded flex items-center justify-center gap-4 w-full">
+          <button className="bg-green-600 py-1 px-2 rounded flex items-center justify-center gap-4 w-full hover:opacity-80">
             <FaPlus />
             New Project
           </button>
