@@ -24,19 +24,22 @@ export const LoginForm = () => {
       <form className="w-[50%] flex items-center justify-center" onSubmit={handleSubmit(onSubmitHandler)}>
         <div>
           <div>
-            <input className="border border-[#393649] mb-[1rem] px-4" type="text" placeholder="Email" {...register("email")} />
-            <p>{errors.email?.message}</p>
+            <h1 className="font-bold mb-[1rem]">Welcome Back</h1>
           </div>
-          <div>
+          <div className="mb-[1rem]">
+            <input className="border border-[#393649] w-full px-4" type="text" placeholder="Email" {...register("email")} />
+            <p className="text-red-500">{errors.email?.message}</p>
+          </div>
+          <div className="mb-[1rem]">
             <input
-            className="border border-[#393649] mb-[1rem] px-4"
+            className="border border-[#393649] w-full px-4"
               type="text"
               placeholder="Password"
               {...register("password")}
             />
-            <p>{errors.password?.message}</p>
+            <p className="text-red-500">{errors.password?.message}</p>
           </div>
-          <button className="w-full mb-[1rem] bg-[#4b95d6] text-white rounded h-[1.8rem]">Login</button>
+          <button className="w-full mb-[1rem] bg-[#4b95d6] hover:opacity-90 text-white rounded h-[1.8rem]">Login</button>
           <div>
             <span>
               Or SignUp <Link to="/auth/signup" className="">here</Link>

@@ -28,43 +28,45 @@ export const SignUp = () => {
           <div>
             <h1 className="font-bold mb-2">Welcome Folk</h1>
           </div>
-          <div>
+          <div className="mb-[1rem]">
             <input
-              className="bg-transparent border border-[#393649] mb-[1rem] px-4"
+              className="bg-transparent border border-[#393649] w-full px-4"
               type="text"
               placeholder="Name"
               {...register("name")}
             />
-            <p>{errors.name?.message}</p>
+            <p className="text-red-500">{errors.name?.message}</p>
           </div>
-          <div>
+          <div className="mb-[1rem]">
             <input
-              className="bg-transparent border border-[#393649] mb-[1rem] px-4"
+              className="bg-transparent border border-[#393649] w-full px-4"
               type="text"
               placeholder="Email"
               {...register("email")}
             />
-            <p>{errors.email?.message}</p>
+            <p className="text-red-500">{errors.email?.message}</p>
           </div>
-          <div>
+          <div className="mb-[1rem]">
             <input
-              className="bg-transparent border border-[#393649] mb-[1rem] px-4"
+              className="bg-transparent border border-[#393649]  w-full px-4"
               type="text"
               placeholder="Password"
               {...register("password")}
             />
-            <p>{errors.password?.message}</p>
+            <p className="text-red-500">{errors.password?.message}</p>
           </div>
-          <div>
+          <div className="mb-[1rem]">
             <input
-              className="bg-transparent border border-[#393649] mb-[1rem] px-4"
+              className="bg-transparent border border-[#393649] w-full  px-4"
               type="text"
               placeholder="Confirm Password"
               {...register("confirmPassword")}
             />
-            <p>{errors.confirmPassword?.message}</p>
+            <p className="text-red-500">{errors.confirmPassword?.message}</p>
           </div>
-          <button className="border-none bg-[#4b95d6] text-white h-[1.8rem] w-full mb-2 rounded">Sign Up</button>
+          <button className="border-none bg-[#4b95d6] hover:opacity-90 text-white h-[1.8rem] w-full mb-2 rounded">
+            Sign Up
+          </button>
           <div>
             <span>
               Or Login <Link to="/auth/login">here</Link>
