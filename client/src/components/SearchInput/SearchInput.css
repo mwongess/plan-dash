@@ -2,10 +2,6 @@
     position: relative;
     background: rgba(255, 255, 255, 0.664);
     padding: 10px 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
     border-radius: 22px;
     max-width: 300px;
     transition: transform 400ms;

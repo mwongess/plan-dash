@@ -2,7 +2,7 @@ import './SearchInput.css'
 
 const SearchInput = () => {
   return (
-    <div className="input__container">
+    <div className="input__container flex gap-[5px] justify-center items-center mb-[1rem] ">
     <div className="shadow__input"></div>
     <button className="input__button__shadow">
       <svg
