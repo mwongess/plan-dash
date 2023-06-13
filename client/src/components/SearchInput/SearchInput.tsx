@@ -2,9 +2,9 @@ import './SearchInput.css'
 
 const SearchInput = () => {
   return (
-    <div className="input__container flex gap-[5px] justify-center items-center mb-[1rem] ">
-    <div className="shadow__input"></div>
-    <button className="input__button__shadow">
+    <div className="input__container flex gap-[5px] justify-center items-center mb-[1rem] relative rounded-[22px] ">
+    <div className="shadow__input absolute w-full h-full rounded-[20px] bg-[#999cff]"></div>
+    <button className="input__button__shadow flex justify-center items-center rounded-[12px] p-[5px] cursor-pointer border-none ">
       <svg
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -22,8 +22,8 @@ const SearchInput = () => {
     <input
       type="text"
       name="text"
-      className="input__search text-[black]"
-      placeholder="What do you want to search?"
+      className="w-full rounded-[20px] border-none p-[8px] text-[black] relative outline-none"
+      placeholder="Search here"
     />
   </div>
   )

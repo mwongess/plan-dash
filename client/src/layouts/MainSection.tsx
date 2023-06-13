@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Projects from "../pages/Projects";
 import { FaGripVertical, FaRegStar, FaSearch } from "react-icons/fa";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import UserCard from "../components/usercard/UserCard";
 const MainSection = () => {
   const [show, setShow] = useState(false);
   return (
-    <div className="">
+    <div className="" >
       <div className="flex flex-col gap-4">
         <div className="h-[12.5rem] bg-[url('/proj.png')] bg-no-repeat bg-right bg-auto">
           <div className="flex justify-between">
@@ -43,7 +43,7 @@ const MainSection = () => {
           <Link to="">Overview</Link>
         </div>
         <div className="">
-          <Projects />
+            <Outlet/>
         </div>
       </div>
     </div>
