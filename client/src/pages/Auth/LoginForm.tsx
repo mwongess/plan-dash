@@ -27,7 +27,7 @@ export const LoginForm = () => {
       >
         <div className="w-[50%]">
           <div>
-            <h1 className="font-bold mb-[2rem]">Welcome Back</h1>
+            <h1 className="font-bold mb-[1.5rem]">Welcome Back</h1>
           </div>
           <div className="group mb-[1.5rem] ">
             <input required type="text" className="input w-full" />

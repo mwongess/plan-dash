@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 import Projects from "../pages/Projects";
 import { FaGripVertical, FaRegStar, FaSearch } from "react-icons/fa";
 import { useState } from "react";
+import UserCard from "../components/usercard/UserCard";
 
 const MainSection = () => {
   const [show, setShow] = useState(false);
   return (
     <div className="">
       <div className="flex flex-col gap-4">
-        <div className="h-44 bg-[url('/proj.png')] bg-no-repeat bg-right bg-auto">
+        <div className="h-[12rem] bg-[url('/proj.png')] bg-no-repeat bg-right bg-auto">
           <div className="flex justify-between">
             <div className="">
               <div className="flex items-center gap-2">
@@ -22,11 +23,12 @@ const MainSection = () => {
               </div>
               <p className="ml-[3rem]">Software Engineer | Scrum Master</p>
               {show && (
-                <div className="border border-[#393649] rounded p-2 mt-[0.5rem] ml-[1rem]">
-                  <p className="cursor-pointer">amosmwongelah@gmail.com</p>
-                  <p className="cursor-pointer">User Settings</p>
-                  <p className="cursor-pointer text-red-500"><Link to='/auth/login'>Sign Out</Link></p>
-                </div>
+                // <div className="border border-[#393649] rounded p-2 mt-[0.5rem] ml-[1rem]">
+                //   <p className="cursor-pointer">amosmwongelah@gmail.com</p>
+                //   <p className="cursor-pointer">User Settings</p>
+                //   <p className="cursor-pointer text-red-500"><Link to='/auth/login'>Sign Out</Link></p>
+                // </div>
+                <UserCard/>
               )}
             </div>
             <div className="flex text-center">

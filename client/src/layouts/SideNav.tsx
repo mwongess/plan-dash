@@ -1,3 +1,4 @@
+import SearchInput from "../components/SearchInput/SearchInput";
 import { FaPlus } from "react-icons/fa";
 
 const SideNav = () => {
@@ -5,13 +6,7 @@ const SideNav = () => {
     <div className="h-[95vh] bg-[url('/proje.png')] bg-no-repeat bg-bottom bg-opacity-0">
       <div className=" flex md:flex-col md:justify-between h-full px-2  ">
         <div>
-          <input
-            className="bg-[#2b283d] p-2 rounded w-full mb-2"
-            type="search"
-            name=""
-            id=""
-            placeholder="Search here "
-          />
+          <SearchInput />
           <div>
             <h3>FAVORITES</h3>
           </div>
