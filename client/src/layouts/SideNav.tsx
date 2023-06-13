@@ -2,8 +2,8 @@ import { FaPlus } from "react-icons/fa";
 
 const SideNav = () => {
   return (
-    <div className="h-[95vh]">
-      <div className=" flex md:flex-col md:justify-between h-full px-2 ">
+    <div className="h-[95vh] bg-[url('/proje.png')] bg-no-repeat bg-bottom bg-opacity-0">
+      <div className=" flex md:flex-col md:justify-between h-full px-2  ">
         <div>
           <input
             className="bg-[#2b283d] p-2 rounded w-full mb-2"

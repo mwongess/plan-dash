@@ -8,7 +8,7 @@ const MainSection = () => {
   return (
     <div className="">
       <div className="flex flex-col gap-4">
-        <div className="h-44 bg-[url('/proje.png')] bg-no-repeat bg-right bg-auto">
+        <div className="h-44 bg-[url('/proj.png')] bg-no-repeat bg-right bg-auto">
           <div className="flex justify-between">
             <div className="">
               <div className="flex items-center gap-2">

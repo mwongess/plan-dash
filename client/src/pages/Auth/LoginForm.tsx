@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginSchema } from "../../schemas/auth.schema";
 import { ILoginData } from "../../types/auth.types";
 import { onSubmitHandler } from "../../actions/auth.actions";
-
+import "./auth.css";
 export const LoginForm = () => {
   const {
     register,
@@ -18,31 +18,41 @@ export const LoginForm = () => {
 
   return (
     <div className="h-screen flex ">
-      <div className="w-[50%] flex items-center justify-center bg-[#03103c]" >
+      <div className="w-[50%] flex items-center justify-center bg-[#03103c]">
         <img src="/se.png" alt="" />
       </div>
-      <form className="w-[50%] flex items-center justify-center" onSubmit={handleSubmit(onSubmitHandler)}>
+      <form
+        className="w-[50%] flex items-center justify-center"
+        onSubmit={handleSubmit(onSubmitHandler)}
+      >
         <div className="w-[50%]">
           <div>
-            <h1 className="font-bold mb-[1rem]">Welcome Back</h1>
+            <h1 className="font-bold mb-[2rem]">Welcome Back</h1>
           </div>
-          <div className="mb-[1rem]">
-            <input className="border border-[#393649] w-full h-[2rem] px-4" type="text" placeholder="Email" {...register("email")} />
-            <p className="text-red-500">{errors.email?.message}</p>
+          <div className="group mb-[1.5rem] ">
+            <input required type="text" className="input w-full" />
+            <span className="highlight "></span>
+            <span className="bar w-full"></span>
+            <label>Name</label>
           </div>
-          <div className="mb-[1rem]">
-            <input
-            className="border border-[#393649] w-full h-[2rem] px-4"
-              type="text"
-              placeholder="Password"
-              {...register("password")}
-            />
-            <p className="text-red-500">{errors.password?.message}</p>
+          <div className="group mb-[1.5rem] ">
+            <input required type="password" className="input w-full" />
+            <span className="highlight"></span>
+            <span className="bar w-full"></span>
+            <label>Password</label>
           </div>
-          <button className="w-full mb-[1rem] bg-[#4b95d6] hover:opacity-90 text-white rounded h-[2rem]">Login</button>
+          <button className="auth-btn border-none   text-white h-[2.55rem] w-full mb-2 rounded">
+            Login
+            <div className="arrow-wrapper">
+              <div className="arrow"></div>
+            </div>
+          </button>{" "}
           <div>
             <span>
-              Or SignUp <Link to="/auth/signup" className="">here</Link>
+              Or SignUp{" "}
+              <Link to="/auth/signup" className="">
+                here
+              </Link>
             </span>
           </div>
         </div>

@@ -6,6 +6,8 @@ import { SignupSchema } from "../../schemas/auth.schema";
 import { IsignupData } from "../../types/auth.types";
 import { onSubmitHandler } from "../../actions/auth.actions";
 
+import "./auth.css";
+
 export const SignUp = () => {
   const {
     register,
@@ -26,46 +28,37 @@ export const SignUp = () => {
       >
         <div className="w-[50%]">
           <div>
-            <h1 className="font-bold mb-2">Welcome Folk</h1>
+            <h1 className="font-bold mb-[2rem]">Welcome Folk</h1>
           </div>
-          <div className="mb-[1rem]">
-            <input
-              className="bg-transparent border border-[#393649] w-full h-[2rem] px-4"
-              type="text"
-              placeholder="Name"
-              {...register("name")}
-            />
-            <p className="text-red-500">{errors.name?.message}</p>
+          <div className="group mb-[1.5rem] ">
+            <input required type="text" className="input w-full" />
+            <span className="highlight"></span>
+            <span className="bar w-full"></span>
+            <label>Name</label>
           </div>
-          <div className="mb-[1rem]">
-            <input
-              className="bg-transparent border border-[#393649] w-full h-[2rem] px-4"
-              type="text"
-              placeholder="Email"
-              {...register("email")}
-            />
-            <p className="text-red-500">{errors.email?.message}</p>
+          <div className="group mb-[1.5rem] ">
+            <input required type="email" className="input w-full" />
+            <span className="highlight"></span>
+            <span className="bar w-full"></span>
+            <label>Email</label>
           </div>
-          <div className="mb-[1rem]">
-            <input
-              className="bg-transparent border border-[#393649]  w-full px-4 h-[2rem]"
-              type="text"
-              placeholder="Password"
-              {...register("password")}
-            />
-            <p className="text-red-500">{errors.password?.message}</p>
+          <div className="group mb-[1.5rem] ">
+            <input required type="password" className="input w-full" />
+            <span className="highlight"></span>
+            <span className="bar w-full"></span>
+            <label>Password</label>
           </div>
-          <div className="mb-[1rem]">
-            <input
-              className="bg-transparent border border-[#393649] w-full   h-[2rem] px-4"
-              type="text"
-              placeholder="Confirm Password"
-              {...register("confirmPassword")}
-            />
-            <p className="text-red-500">{errors.confirmPassword?.message}</p>
+          <div className="group mb-[1.5rem] ">
+            <input required type="password" className="input w-full" />
+            <span className="highlight"></span>
+            <span className="bar w-full"></span>
+            <label>Confirm Password</label>
           </div>
-          <button className="border-none bg-[#4b95d6] hover:opacity-90 text-white h-[2rem] w-full mb-2 rounded">
-            Sign Up
+          <button className="auth-btn border-none   text-white h-[2.55rem] w-full mb-2 rounded">
+            Sign up
+            <div className="arrow-wrapper">
+              <div className="arrow"></div>
+            </div>
           </button>
           <div>
             <span>
