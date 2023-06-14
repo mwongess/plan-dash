@@ -2,7 +2,7 @@ import "./UserCard.css";
 
 const UserCard = () => {
   return (
-    <div className="user-card flex flex-col w-[200px] justify-center bg-[#0d1117] ml-[0.5rem] mt-[0.5rem]">
+    <div className="user-card flex flex-col w-[200px] justify-center bg-[#0d1117]">
       <button className="value flex items-center gap-[5px] cursor-pointer p-[10px] border-none bg-[transparent] text-[white]">
         <svg
           data-name="Layer 2"

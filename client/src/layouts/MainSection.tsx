@@ -3,34 +3,38 @@ import Projects from "../pages/Projects";
 import { FaGripVertical, FaRegStar, FaSearch } from "react-icons/fa";
 import { useState } from "react";
 import UserCard from "../components/usercard/UserCard";
+import SearchInput from "../components/SearchInput/SearchInput";
 
 const MainSection = () => {
   const [show, setShow] = useState(false);
   return (
-    <div className="" >
-      <div className="flex flex-col gap-4">
-        <div className="h-[12.5rem] bg-[url('/proj.png')] bg-no-repeat bg-right bg-auto">
+    <div className="">
+      <div className="flex flex-col gap-4 ">
+        <div className="bg-[url('/proj.pn')] bg-no-repeat border-b border-[#393649] bg-right bg-auto ">
           <div className="flex justify-between">
-            <div className="">
-              <div className="flex items-center gap-2">
-                <img
-                  onClick={() => setShow(!show)}
-                  className="h-[2.5rem] rounded-full cursor-pointer hover:border-2 hover:border-[#4099ff]"
-                  src="https://w7.pngwing.com/pngs/481/915/png-transparent-computer-icons-user-avatar-woman-avatar-computer-business-conversation-thumbnail.png"
-                  alt=""
-                />
-                <h1 className="font-bold text-[28px]">Amos Mwongela</h1>
+            <div>
+              <SearchInput />
+            </div>
+            <div className="flex items-center gap-[2rem]">
+              {/* <div className="">
+                <h1 className="text-xl">{new Date().toDateString()}</h1>
+              </div> */}
+              <div className="flex  gap-4 text-xl cursor-pointer">
+                <FaSearch />
+                <FaRegStar />
+                <FaGripVertical />
               </div>
-              <p className="ml-[3rem]">Software Engineer | Scrum Master</p>
-              {show && <UserCard />}
-            </div>
-            <div className="flex text-center">
-              <h1 className="text-2xl">{new Date().toDateString()}</h1>
-            </div>
-            <div className="flex gap-4 text-md cursor-pointer">
-              <FaSearch />
-              <FaRegStar />
-              <FaGripVertical />
+              <div className="">
+                <div className="">
+                  <img
+                    onClick={() => setShow(!show)}
+                    className="h-[2.3rem] rounded-full cursor-pointer hover:border-2 hover:border-[#4099ff]"
+                    src="https://w7.pngwing.com/pngs/481/915/png-transparent-computer-icons-user-avatar-woman-avatar-computer-business-conversation-thumbnail.png"
+                    alt=""
+                  />
+                </div>
+                {show && <UserCard />}
+              </div>
             </div>
           </div>
         </div>
@@ -43,7 +47,7 @@ const MainSection = () => {
           <Link to="">Overview</Link>
         </div>
         <div className="">
-            <Outlet/>
+          <Outlet />
         </div>
       </div>
     </div>

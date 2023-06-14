@@ -7,7 +7,7 @@ const SideNav = () => {
     <div className="h-[95vh] bg-[url('/proje.png')] bg-no-repeat bg-bottom bg-opacity-0">
       <div className=" flex md:flex-col md:justify-between h-full px-2  ">
         <div>
-          <SearchInput />
+          {/* <SearchInput /> */}
           <div>
             <h3>FAVORITES</h3>
           </div>
