@@ -11,7 +11,9 @@ export const NewProject = (req: IProjectRequest, res: Response) => {
     const projectId = uuid();
     const { title, description, scope } = req.body;
     const { error, value } = ProjectSchema.validate(req.body);
-    error ? res.status(500).json({ error: error.details[0].message }) : null;
+    if (error) {
+      res.status(500).json({ error: error.details[0].message });
+    }
     db.executeProcedure("NewProject", {
       projectId,
       title,
@@ -27,19 +29,22 @@ export const GetProjects = async (req: Request, res: Response) => {
   try {
     const { recordset } = await db.executeProcedure("GetProjects");
     res.status(200).json(recordset);
-  } catch (error) {
-    res.json({ error: error });
+  } catch (error: any) {
+    res.json({ error: error.message });
   }
 };
+
 export const GetProject = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { recordset } = await db.executeProcedure("GetProject", { id });
-    !recordset[0]
-      ? res.status(404).json({ message: "Project not found" })
-      : res.status(200).json(recordset);
-  } catch (error) {
-    res.json({ error: error });
+    if (!recordset[0]) {
+      res.status(404).json({ message: "Project not found" });
+    } else {
+      res.status(200).json(recordset);
+    }
+  } catch (error: any) {
+    res.json({ error: error.message });
   }
 };
 export const DeleteProject = async (req: Request, res: Response) => {

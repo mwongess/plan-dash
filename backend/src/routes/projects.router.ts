@@ -4,7 +4,7 @@ import { Router } from "express";
 
 export const projectsRouter = Router()
 
-projectsRouter.get('/', VerifyToken,GetProjects)
+projectsRouter.get('/',GetProjects)
 projectsRouter.post('/', NewProject)
 projectsRouter.get('/:id', GetProject)
 projectsRouter.delete('/:id', DeleteProject)
