@@ -44,10 +44,13 @@ export const LoginExistingUser = async (req: ILoginRequest, res: Response) => {
     }
     const user: IUser[] = (await db.executeProcedure("GetUser", { email }))
       .recordset;
-    !user[0] ? res.json({ error: "Account doesnt exist" }) : null;
+    if (!user[0]) {
+      return res.json({ error: "Account doesnt exist" });
+    }
     const validpassword = await bcrypt.compare(password, user[0].password);
-    !validpassword ? res.json({ error: "Try another password" }) : null;
-
+    if (!validpassword) {
+      res.json({ error: "Try another password" });
+    }
     const payload = user.map((item) => {
       const { password, ...rest } = item;
       return rest;
@@ -61,5 +64,7 @@ export const LoginExistingUser = async (req: ILoginRequest, res: Response) => {
       message: "Logged in successfully",
       token,
     });
-  } catch (error) {}
+  } catch (error) {
+    res.json(error);
+  }
 };
