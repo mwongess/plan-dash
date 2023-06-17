@@ -8,14 +8,14 @@ const db = new Connection();
 
 export const NewProject = (req: IProjectRequest, res: Response) => {
   try {
-    const projectId = uuid();
+    const project_id = uuid();
     const { title, description, scope } = req.body;
     const { error, value } = ProjectSchema.validate(req.body);
     if (error) {
       res.status(500).json({ error: error.details[0].message });
     }
     db.executeProcedure("NewProject", {
-      projectId,
+      project_id,
       title,
       description,
       scope,
@@ -36,8 +36,8 @@ export const GetProjects = async (req: Request, res: Response) => {
 
 export const GetProject = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
-    const { recordset } = await db.executeProcedure("GetProject", { id });
+    const { project_id } = req.params;
+    const { recordset } = await db.executeProcedure("GetProject", { project_id });
     if (!recordset[0]) {
       res.status(404).json({ message: "Project not found" });
     } else {
@@ -49,12 +49,12 @@ export const GetProject = async (req: Request, res: Response) => {
 };
 export const DeleteProject = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
-    const { recordset } = await db.executeProcedure("GetProject", { id });
+    const { project_id } = req.params;
+    const { recordset } = await db.executeProcedure("GetProject", { project_id });
     if (!recordset[0]) {
       return res.status(404).json({ message: "Project not found" });
     }
-    await db.executeProcedure("DeleteProject", { id });
+    await db.executeProcedure("DeleteProject", { project_id });
     res.status(200).json({ message: "Project deleted successfully" });
   } catch (error) {}
 };
