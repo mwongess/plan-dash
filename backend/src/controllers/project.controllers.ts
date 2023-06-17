@@ -58,3 +58,19 @@ export const DeleteProject = async (req: Request, res: Response) => {
     res.status(200).json({ message: "Project deleted successfully" });
   } catch (error) {}
 };
+
+export const AssignProject = async (req: Request, res: Response) => {
+  try {
+    const { user_id, project_id } = req.params;
+    const { recordset } = await db.executeProcedure("GetProject", {
+      project_id,
+    });
+    if (!recordset[0]) {
+      return res.status(404).json({ message: "Project not found" });
+    }
+    await db.executeProcedure("AssignProject", { user_id, project_id });
+    res.json(200).json({ message: "Project updated successfully" });
+  } catch (error) {
+    res.json(error);
+  }
+};
