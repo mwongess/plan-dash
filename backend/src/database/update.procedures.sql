@@ -1,10 +1,10 @@
 -- 
 CREATE PROCEDURE AssignProject
-    @userId VARCHAR(200),
-    @projectId VARCHAR(200),
+    @user_id VARCHAR(200),
+    @project_id VARCHAR(200),
 AS
 BEGIN
     UPDATE projects
-    SET userId = @userId,status = 'pending'
-    WHERE projectId = @projectId;
+    SET user_id = @user_id
+    WHERE project_id = @project_id;
 END

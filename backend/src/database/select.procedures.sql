@@ -13,10 +13,10 @@ END;
 
 -- 
 CREATE PROCEDURE GetProject
-    @projectId VARCHAR(200)
+    @project_id VARCHAR(200)
 AS
 BEGIN
-    SELECT * FROM projects WHERE projectId = @projectId;
+    SELECT * FROM projects WHERE project_id = @project_id;
 END;
 
 -- 
@@ -31,6 +31,6 @@ END;
 CREATE PROCEDURE GetNotAssigned
 AS
 BEGIN
-    SELECT * FROM users WHERE userId = null;
+    SELECT * FROM users WHERE user_id = null;
 END;
 -- 
