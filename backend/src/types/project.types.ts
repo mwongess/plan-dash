@@ -1,5 +1,5 @@
 export interface IProject {
-  projectId: string;
+  project_id: string;
   title: string;
   description: string;
   scope: string;

@@ -16,7 +16,7 @@ export interface ILoginRequest extends Request {
 }
 
 export interface IUser {
-  userId: string | number
+  user_id: string | number
   name: string;
   email: string;
   password: string;
