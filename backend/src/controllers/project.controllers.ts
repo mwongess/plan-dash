@@ -88,3 +88,20 @@ export const AssignProject = async (req: Request, res: Response) => {
     res.json(error.message);
   }
 };
+
+export const UpdateStatus = async(req: Request, res: Response) =>{
+  try {
+    const {project_id,status} = req.params
+    const { recordset } = await db.executeProcedure("GetProject", {
+      project_id,
+    });
+    if (!recordset[0]) {
+      return res.status(404).json({ message: "Project not found" });
+    }
+    await db.executeProcedure("UpdateStatus", {project_id,status})
+    res.status(200).json({message: `Project status updated to ${status}`})
+  } catch (error:any) {
+    res.json(error.message)
+  }
+}
+ 
