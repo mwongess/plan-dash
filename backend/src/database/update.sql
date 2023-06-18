@@ -1,7 +1,6 @@
--- 
 CREATE PROCEDURE AssignProject
     @user_id VARCHAR(200),
-    @project_id VARCHAR(200),
+    @project_id VARCHAR(200)
 AS
 BEGIN
     UPDATE projects
