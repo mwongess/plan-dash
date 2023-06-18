@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import Projects from "../pages/Projects";
 import { FaGripVertical, FaRegStar, FaSearch } from "react-icons/fa";
 import { useState } from "react";
@@ -40,7 +40,7 @@ const MainSection = () => {
         </div>
 
         <div className="flex  gap-x-8 border-b border-[#393649] pb-3">
-          <Link to="">My Organisations</Link>
+          <NavLink to="" className="">My Organisations</NavLink>
           <Link to="">Projects</Link>
           <Link to="">Team</Link>
           <Link to="">Timeline</Link>

@@ -4,7 +4,7 @@ import { SignUp } from "../pages/Auth/SignUpForm";
 import { ListView } from "../components/ListView";
 import BoardView from "../components/BoardView";
 import Dashboard from "../layouts/Dashboard";
-import Landing from "../pages/Landing";
+import Landing, { loader } from "../pages/Landing";
 import {
   Route,
   createBrowserRouter,
@@ -16,7 +16,7 @@ import NewProject from "../components/NewProject/NewProject";
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<Landing />} loader={loader} />
       <Route path="auth/login" element={<LoginForm />} />
       <Route path="auth/signup" element={<SignUp />} />
       <Route path="dashboard" element={<Dashboard />}>
