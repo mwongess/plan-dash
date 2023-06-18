@@ -12,7 +12,7 @@ const db = new Connection();
 
 export const SignupNewUser = async (req: ISignupRequest, res: Response) => {
   try {
-    const userId = uuid();
+    const user_id = uuid();
     let { name, email, password } = req.body;
     const { error, value } = SignUpSchema.validate(req.body);
     if (error) {
@@ -24,14 +24,14 @@ export const SignupNewUser = async (req: ISignupRequest, res: Response) => {
     }
     password = await bcrypt.hash(password, 10);
     await db.executeProcedure("NewUser", {
-      userId,
+      user_id,
       name,
       email,
       password,
     });
     res.json({ message: "Account created successfully" });
-  } catch (error) {
-    res.json({ error: error });
+  } catch (error: any) {
+    res.json(error.message);
   }
 };
 
