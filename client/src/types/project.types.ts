@@ -1,12 +1,9 @@
 export interface IProject {
-    id: string | number;
+    project_id: string | number;
     title: string;
     description: string
     platform: string
     scope: string;
-    user_id: string
-    isArchived: string
-    isFav: string
   }
 
 

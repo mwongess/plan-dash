@@ -6,7 +6,7 @@ import { IProject } from "../types/project.types";
 const URL = 'http://localhost:3000/projects/'; //Backend API
 
 // START FETCHING PROJECTS
-export const getProjects = async (): Promise<IProject[]> => {
+export const getProjects = async (): Promise<{projects: IProject[]}> => {
   const res = await fetch(URL);
   if (!res.ok) {
     throw new Error('Network response was not ok')
@@ -18,7 +18,7 @@ export const getProjects = async (): Promise<IProject[]> => {
 
 //START NEW PROJECT
 export const newProject = async (project: IProject): Promise<IProject> => {
-  const res = await fetch(`${URL + "/new"}`, {
+  const res = await fetch(`${URL + "new"}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,14 +31,19 @@ export const newProject = async (project: IProject): Promise<IProject> => {
 //END
 
 //START UPDATE PROJECT
-export const updateProject = async (id: string | number) => {
+export const updateProject = async (project: IProject) => {
   return ''
 };
 //END
 
 //START DELETE PROJECT
 export const deleteProject = async (id: string | number) => {
-  const res = await fetch(`${URL + id}`, { method: "DELETE" });
+  const res = await fetch(`${URL + id}`, { 
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+   });
   const data = await res.json();
   return data;
 };

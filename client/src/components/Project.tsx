@@ -1,7 +1,9 @@
 import { FaArchive, FaBatteryHalf, FaTrash, FaUserCheck } from "react-icons/fa";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { VscKebabVertical } from "react-icons/vsc";
 import { useState } from "react";
 import { IProject } from "../types/project.types";
+import { deleteProject } from "../actions/project.actions";
 // import {useContext} from 'react'
 
 const Project: React.FC<{project: IProject  }> = ({project}) => {
@@ -9,6 +11,14 @@ const Project: React.FC<{project: IProject  }> = ({project}) => {
   const toggleMoreDetails = () => {
     setShowMoreDetails((prevState) => !prevState);
   };
+  const queryClient = useQueryClient();
+
+  const deleteProjectMutation = useMutation({
+    mutationFn: (id: string) => deleteProject(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["projects"]);
+    },
+  });
 
   return (
     <div className="relative">
@@ -41,9 +51,9 @@ const Project: React.FC<{project: IProject  }> = ({project}) => {
               <FaUserCheck />
               Task Someone
             </p>
-            {/* <p className="cursor-pointer flex items-center gap-[0.5rem]">
+            <p className="cursor-pointer flex items-center gap-[0.5rem]">
               <FaArchive /> Archive Project
-            </p> */}
+            </p>
             <p className="cursor-pointer flex items-center gap-[0.5rem]">
               <FaBatteryHalf /> Update Status
             </p>
@@ -63,7 +73,7 @@ const Project: React.FC<{project: IProject  }> = ({project}) => {
               </option>
             </select>
             <hr />
-            <p className="cursor-pointer flex items-center gap-[0.5rem] text-[red]">
+            <p onClick={()=>deleteProjectMutation.mutate(project.project_id)} className="cursor-pointer flex items-center gap-[0.5rem] text-[red]">
               <FaTrash />
               Delete Project
             </p>
