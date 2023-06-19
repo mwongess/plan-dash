@@ -33,7 +33,7 @@ const MainSection = () => {
                     alt=""
                   />
                 </div>
-                {show && <UserCard />}
+                {/* {show && <UserCard />} */}
               </div>
             </div>
           </div>

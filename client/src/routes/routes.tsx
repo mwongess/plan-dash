@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import Projects from "../pages/Projects";
 import NewProject from "../components/NewProject/NewProject";
+import { getProjects } from "../actions/project.actions";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,7 +20,7 @@ export const router = createBrowserRouter(
       <Route path="/" element={<Landing />} loader={loader} />
       <Route path="auth/login" element={<LoginForm />} />
       <Route path="auth/signup" element={<SignUp />} />
-      <Route path="dashboard" element={<Dashboard />}>
+      <Route path="dashboard" element={<Dashboard />} loader={getProjects}>
         <Route path="" element={<Projects />}>
             <Route path="" element={<BoardView />} />
             <Route path="table" element={<TableView />} />

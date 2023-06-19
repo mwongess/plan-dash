@@ -1,8 +1,14 @@
 import { FaCircle, FaPlusCircle } from "react-icons/fa";
 import { VscKebabVertical } from "react-icons/vsc";
 import Project from "./Project";
+import { useQuery } from "@tanstack/react-query";
+import { getProjects } from "../actions/project.actions";
+import { IProject } from "../types/project.types";
 
 const BoardView = () => {
+  const { data } = useQuery<IProject[], Error>(["projects"], getProjects);
+  console.log(data);
+
   return (
     <div className="grid grid-cols-4">
       <div className="border-r border-[#393649]">
@@ -17,7 +23,11 @@ const BoardView = () => {
             <FaPlusCircle className="cursor-pointer" />
           </p>
         </div>
-        <div></div>
+        <div>
+          {data?.map((proj) => (
+            <Project project={proj} />
+          ))}
+        </div>
       </div>
       <div className="border-r border-[#393649]">
         <div className="flex items-center justify-between border-b border-[#393649] p-3 ">
@@ -28,8 +38,13 @@ const BoardView = () => {
             <h3>On Progress(13)</h3>
           </div>
           <p className="text-[#fab52d] text-2xl">
-            <FaPlusCircle  className="cursor-pointer"/>
+            <FaPlusCircle className="cursor-pointer" />
           </p>
+        </div>
+        <div>
+          {data?.map((proj) => (
+            <Project project={proj} />
+          ))}
         </div>
       </div>
       <div className="border-r border-[#393649] ">
@@ -44,7 +59,11 @@ const BoardView = () => {
             <FaPlusCircle className="cursor-pointer" />
           </p>
         </div>
-        <Project/>
+        <div>
+          {data?.map((proj) => (
+            <Project project={proj} />
+          ))}
+        </div>
       </div>
       <div className="">
         <div className="flex items-center justify-between border-b border-[#393649] p-3">
@@ -55,8 +74,13 @@ const BoardView = () => {
             <h3>Complete(78)</h3>
           </div>
           <p className="text-2xl">
-            <FaPlusCircle className="cursor-pointer"/>
+            <FaPlusCircle className="cursor-pointer" />
           </p>
+        </div>
+        <div>
+          {data?.map((proj) => (
+            <Project project={proj} />
+          ))}
         </div>
       </div>
     </div>

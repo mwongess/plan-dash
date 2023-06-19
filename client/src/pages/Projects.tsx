@@ -3,10 +3,10 @@ import { getProjects } from "../actions/project.actions";
 import { IProject } from "../types/project.types";
 import { useQuery } from "@tanstack/react-query";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { log } from "console";
 
 const Projects = () => {
-  const { data } = useQuery<IProject[], Error>(["projects"], getProjects);
-
+  
   // return data?.map((project: IProject) => <Project project={project} />);
   return (
     <div>
