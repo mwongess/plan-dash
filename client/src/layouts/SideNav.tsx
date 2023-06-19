@@ -19,10 +19,12 @@ const SideNav = () => {
           <h3>ARCHIVES</h3>
         </div>
         <div>
-          <button className="bg-[#00A97F] py-1 px-2 rounded flex items-center justify-center gap-4 w-full hover:opacity-80">
-            <FaPlus />
-            <Link to="/dashboard/project/new">New Project</Link>
-          </button>
+          <Link to="/dashboard/project/new">
+            <button className="bg-[#00A97F] py-1 px-2 rounded flex items-center justify-center gap-3 w-full hover:opacity-80">
+              <FaPlus />
+              New Project
+            </button>
+          </Link>
         </div>
       </div>
     </div>
