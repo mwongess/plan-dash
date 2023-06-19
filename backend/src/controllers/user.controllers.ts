@@ -49,7 +49,7 @@ export const LoginExistingUser = async (req: ILoginRequest, res: Response) => {
     }
     const validpassword = await bcrypt.compare(password, user[0].password);
     if (!validpassword) {
-      res.json({ error: "Try another password" });
+      return res.json({ error: "Try another password" });
     }
     const payload = user.map((item) => {
       const { password, ...rest } = item;
