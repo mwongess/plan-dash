@@ -12,7 +12,7 @@ export const NewProject = (req: IProjectRequest, res: Response) => {
     const { title, description,platform, scope } = req.body;
     const { error, value } = ProjectSchema.validate(req.body);
     if (error) {
-      return res.status(500).json({ error: error.details[0].message });
+      return res.json({ error: error.details[0].message });
     }
     db.executeProcedure("NewProject", {
       project_id,
@@ -32,7 +32,7 @@ export const GetProjects = async (req: Request, res: Response) => {
     if (!recordset[0]) {
       return res.json({ message: "No projects found" });
     }
-    res.status(200).json(recordset);
+    res.status(200).json({projects: recordset});
   } catch (error: any) {
     res.json({ error: error.message });
   }
@@ -64,7 +64,9 @@ export const DeleteProject = async (req: Request, res: Response) => {
     }
     await db.executeProcedure("DeleteProject", { project_id });
     res.status(200).json({ message: "Project deleted successfully" });
-  } catch (error) {}
+  } catch (error: any) {
+    res.json(error.message)
+  }
 };
 
 export const AssignProject = async (req: Request, res: Response) => {
