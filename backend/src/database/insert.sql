@@ -22,12 +22,13 @@ DROP PROCEDURE NewProject
 CREATE PROCEDURE NewProject
     @project_id VARCHAR(200),
     @title VARCHAR(50),
+    @platform VARCHAR(200),
     @scope VARCHAR(200),
     @description VARCHAR(200)
 AS
 BEGIN
     INSERT INTO projects
-        (project_id, title, scope, description)
+        (project_id, title,platform, scope, description)
     VALUES
-        (@project_id, @title, @scope, @description);
+        (@project_id, @title,@platform, @scope, @description);
 END;

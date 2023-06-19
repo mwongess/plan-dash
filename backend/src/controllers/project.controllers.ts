@@ -9,7 +9,7 @@ const db = new Connection();
 export const NewProject = (req: IProjectRequest, res: Response) => {
   try {
     const project_id = uuid();
-    const { title, description, scope } = req.body;
+    const { title, description,platform, scope } = req.body;
     const { error, value } = ProjectSchema.validate(req.body);
     if (error) {
       return res.status(500).json({ error: error.details[0].message });
@@ -18,6 +18,7 @@ export const NewProject = (req: IProjectRequest, res: Response) => {
       project_id,
       title,
       description,
+      platform,
       scope,
     });
     res.status(200).json({ message: "Project created successfully" });

@@ -12,6 +12,7 @@ CREATE TABLE projects
     project_id VARCHAR(200) PRIMARY KEY,
     title VARCHAR(50) NOT NULL,
     description VARCHAR(200),
+    platform VARCHAR(200),
     scope VARCHAR(200),
     user_id VARCHAR(200) DEFAULT null,
     status VARCHAR(200) DEFAULT 'new',
