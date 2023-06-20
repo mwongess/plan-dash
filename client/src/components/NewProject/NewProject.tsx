@@ -1,7 +1,7 @@
+import { usePlanDashContext } from "../../contexts/PlanDashContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { projectSchema } from "../../schemas/project.schema";
-import { newProject } from "../../actions/project.actions";
-import { IProject } from "../../types/project.types";
+import { IProject, IProjectRequest } from "../../types/project.types";
 import SaveBtn from "../SaveBtn/SaveBtn";
 
 import { FieldValues, useForm } from "react-hook-form";
@@ -9,30 +9,27 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 
 const NewProject = () => {
-  const navigate = useNavigate()
-  const {
-    register,
-    handleSubmit,
-    reset,
-  } = useForm({
+  const navigate = useNavigate();
+  const { register, handleSubmit, reset } = useForm({
     resolver: yupResolver(projectSchema),
   });
 
-  
+  const { newProject } = usePlanDashContext()!;
   const queryClient = useQueryClient();
 
   const newProjectMutation = useMutation({
-    mutationFn: (project: IProject) => newProject(project),
+    mutationFn: (project: IProjectRequest) => newProject(project),
     onSuccess: () => {
       queryClient.invalidateQueries(["projects"]);
-      navigate('/dashboard')
+      navigate("/dashboard");
     },
   });
 
   const onSubmitHandler = (data: FieldValues) => {
-    newProjectMutation.mutate(data)
-    reset()
+    newProjectMutation.mutate(data as IProjectRequest);
+    reset();
   };
+  
   return (
     <div className="">
       <form

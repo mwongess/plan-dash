@@ -1,4 +1,4 @@
-import { IProject } from "../types/project.types";
+import {IProject, IProjectRequest } from "../types/project.types";
 
 // import dotenv from "dotenv";
 // dotenv.config();
@@ -17,7 +17,7 @@ export const getProjects = async (): Promise<{projects: IProject[]}> => {
 // END
 
 //START NEW PROJECT
-export const newProject = async (project: IProject): Promise<IProject> => {
+export const newProject = async (project: IProjectRequest): Promise<IProjectRequest> => {
   const res = await fetch(`${URL + "new"}`, {
     method: "POST",
     headers: {

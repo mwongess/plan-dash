@@ -2,8 +2,8 @@ import { FaArchive, FaBatteryHalf, FaTrash, FaUserCheck } from "react-icons/fa";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { VscKebabVertical } from "react-icons/vsc";
-import { IProject } from "../types/project.types";
 import { useState } from "react";
+import { IProject } from "../types/project.types";
 
 const Project: React.FC<{ project: IProject }> = ({ project }) => {
   const [showMoreDetails, setShowMoreDetails] = useState(false);
@@ -73,7 +73,7 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
             </select>
             <hr />
             <p
-              onClick={() => deleteProjectMutation.mutate(project.project_id)}
+              onClick={() => deleteProjectMutation.mutate(project.project_id as string)}
               className="cursor-pointer flex items-center gap-[0.5rem] text-[red]"
             >
               <FaTrash />

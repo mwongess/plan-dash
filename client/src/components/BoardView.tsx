@@ -83,7 +83,7 @@ const BoardView = () => {
           </div>
         </div>
       </div>
-      {data?.message && (
+      {data?.message as string && (
         <div className="flex flex-col justify-center items-center h-[10rem] p-3  border-[1.5px] border-[#dc3545] rounded">
 
           <h1 className="text-2xl">No Found Projects⚠️</h1>
