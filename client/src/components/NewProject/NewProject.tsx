@@ -1,7 +1,7 @@
 import { usePlanDashContext } from "../../contexts/PlanDashContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { projectSchema } from "../../schemas/project.schema";
-import { IProject, IProjectRequest } from "../../types/project.types";
+import { IProjectRequest } from "../../types/project.types";
 import SaveBtn from "../SaveBtn/SaveBtn";
 
 import { FieldValues, useForm } from "react-hook-form";

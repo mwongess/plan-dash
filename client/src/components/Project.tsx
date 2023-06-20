@@ -41,10 +41,25 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
       <div className="m-3 p-3 bg-[#29253d] rounded-lg ">
         <div className="flex justify-between items-center ">
           <div className="flex gap-4">
-            <p className="bg-[#243e3a] text-[#1e7b35] p-1 px-2 w-fit rounded-full text-center ">
+            <p
+              className={
+                (project.platform == "App"
+                  ? " bg-[#243e3a] text-[#1e7b35] "
+                  : " bg-[#fb9500]") +
+                " p-1 px-2 w-fit rounded-full text-center "
+              }
+            >
               {project.platform}
             </p>
-            <p className="bg-[#4099ff] p-1 px-2 w-fit rounded-full text-center">
+            <p
+              className={
+                (project.scope == "Backend"
+                  ? "bg-[#f862bb] "
+                  : project.scope == "Planning"
+                  ? "bg-[#f862bb] "
+                  : "") + "bg-[#4099ff] p-1 px-2 w-fit rounded-full text-center"
+              }
+            >
               {project.scope}
             </p>
           </div>
