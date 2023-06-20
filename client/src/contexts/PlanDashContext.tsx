@@ -1,5 +1,6 @@
 import {
   deleteProject,
+  getProjects,
   newProject,
   updateProject,
 } from "../actions/project.actions";
@@ -21,6 +22,7 @@ export const PlanDashProvider: React.FC<{ children: ReactNode }> = ({
     <PlanDashContext.Provider
       value={{
         projects,
+        getProjects,
         newProject,
         setProjects,
         updateProject,

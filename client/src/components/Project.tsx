@@ -1,20 +1,21 @@
 import { FaArchive, FaBatteryHalf, FaTrash, FaUserCheck } from "react-icons/fa";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { VscKebabVertical } from "react-icons/vsc";
-import { useState } from "react";
 import { IProject } from "../types/project.types";
-import { deleteProject } from "../actions/project.actions";
-// import {useContext} from 'react'
+import { useState } from "react";
 
-const Project: React.FC<{project: IProject  }> = ({project}) => {
+const Project: React.FC<{ project: IProject }> = ({ project }) => {
   const [showMoreDetails, setShowMoreDetails] = useState(false);
   const toggleMoreDetails = () => {
     setShowMoreDetails((prevState) => !prevState);
   };
+
   const queryClient = useQueryClient();
+  const { deleteProject } = usePlanDashContext()!;
 
   const deleteProjectMutation = useMutation({
-    mutationFn: (id: string) => deleteProject(id),
+    mutationFn: (id: string | number) => deleteProject(id),
     onSuccess: () => {
       queryClient.invalidateQueries(["projects"]);
     },
@@ -38,9 +39,7 @@ const Project: React.FC<{project: IProject  }> = ({project}) => {
         </div>
         <div>
           <h4 className="my-2 font-bold">{project.title}</h4>
-          <p>
-            {project.description}
-          </p>
+          <p>{project.description}</p>
         </div>
       </div>
       {showMoreDetails && (
@@ -73,7 +72,10 @@ const Project: React.FC<{project: IProject  }> = ({project}) => {
               </option>
             </select>
             <hr />
-            <p onClick={()=>deleteProjectMutation.mutate(project.project_id)} className="cursor-pointer flex items-center gap-[0.5rem] text-[red]">
+            <p
+              onClick={() => deleteProjectMutation.mutate(project.project_id)}
+              className="cursor-pointer flex items-center gap-[0.5rem] text-[red]"
+            >
               <FaTrash />
               Delete Project
             </p>

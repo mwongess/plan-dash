@@ -1,10 +1,11 @@
+import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { FaCircle, FaPlusCircle } from "react-icons/fa";
-import { getProjects } from "../actions/project.actions";
 import { IProject } from "../types/project.types";
 import { useQuery} from "@tanstack/react-query";
 import Project from "./Project";
 
 const BoardView = () => {
+  const {getProjects} = usePlanDashContext()!
   const { data } = useQuery<{ projects: IProject[] }, Error>(
     ["projects"],
     getProjects
