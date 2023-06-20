@@ -88,14 +88,16 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
               className="bg-transparent border rounded w-fit "
               name="status"
             >
+              <option className="bg-black">Status</option>
               <option className="bg-black" value="Pending">
                 Pending
               </option>
-              <option className="bg-black" value="Completed">
-                Completed
-              </option>
+
               <option className="bg-black" value="On Review">
                 On Review
+              </option>
+              <option className="bg-black" value="Completed">
+                Completed
               </option>
             </select>
             <hr />

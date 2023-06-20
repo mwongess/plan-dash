@@ -9,8 +9,9 @@ export interface IProject{
   project_id: string;
   title: string;
   description: string
-  userr_id: string
+  user_id: string
   platform: string
+  status: string
   scope: string;
   isArchived: boolean
   isFav: boolean

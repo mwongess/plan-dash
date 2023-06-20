@@ -13,7 +13,7 @@ const BoardView = () => {
   if (isLoading) {
     return <span>Loading...</span>;
   }
-  if (status === 'error')  {
+  if (status === "error") {
     return "An error has occurred: " + error.message;
   }
   return (
@@ -33,7 +33,9 @@ const BoardView = () => {
           </div>
           <div>
             {data?.projects &&
-              data?.projects.map((proj) => <Project project={proj} />)}
+              data?.projects.map(
+                (proj) => proj.status === "new" && <Project project={proj} />
+              )}
           </div>
         </div>
         <div className="border-r border-[#393649]">
@@ -50,7 +52,10 @@ const BoardView = () => {
           </div>
           <div>
             {data?.projects &&
-              data?.projects.map((proj) => <Project project={proj} />)}
+              data?.projects.map(
+                (proj) =>
+                  proj.status === "Pending" && <Project project={proj} />
+              )}
           </div>
         </div>
         <div className="border-r border-[#393649] ">
@@ -67,7 +72,10 @@ const BoardView = () => {
           </div>
           <div>
             {data?.projects &&
-              data?.projects.map((proj) => <Project project={proj} />)}
+              data?.projects.map(
+                (proj) =>
+                  proj.status === "On Review" && <Project project={proj} />
+              )}
           </div>
         </div>
         <div className="">
@@ -84,7 +92,10 @@ const BoardView = () => {
           </div>
           <div>
             {data?.projects &&
-              data?.projects.map((proj) => <Project project={proj} />)}
+              data?.projects.map(
+                (proj) =>
+                  proj.status === "Completed" && <Project project={proj} />
+              )}
           </div>
         </div>
       </div>
