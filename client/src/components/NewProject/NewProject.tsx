@@ -64,7 +64,7 @@ const NewProject = () => {
               <select
                 {...register("platform")}
                 className="bg-transparent border h-[2rem] border-[#393649]"
-                name=""
+                name="platform"
                 id=""
               >
                 {/* <option className="bg-[black]" value=""></option> */}
@@ -80,7 +80,7 @@ const NewProject = () => {
               <p>Scope</p>
               <select
                 {...register("scope")}
-                name=""
+                name="scope"
                 id=""
                 className="bg-transparent h-[2rem] border border-[#393649]"
               >

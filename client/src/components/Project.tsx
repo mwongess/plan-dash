@@ -4,6 +4,7 @@ import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { VscKebabVertical } from "react-icons/vsc";
 import { useState } from "react";
 import { IProject } from "../types/project.types";
+import { updateStatus } from "../actions/project.actions";
 
 const Project: React.FC<{ project: IProject }> = ({ project }) => {
   const [showMoreDetails, setShowMoreDetails] = useState(false);
@@ -20,6 +21,14 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
       queryClient.invalidateQueries(["projects"]);
     },
   });
+
+  const updateStatusMutation = useMutation({
+    mutationFn: (data: {project_id: string ,status:string}) => updateStatus(data),
+    onSuccess: ()=> {
+      queryClient.invalidateQueries(["projects"])
+    }
+  })
+
 
   return (
     <div className="relative">
@@ -57,17 +66,17 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
               <FaBatteryHalf /> Update Status
             </p>
             <select
+            onChange={(e)=> updateStatusMutation.mutate({project_id:project.project_id, status:e.target.value} as unknown as  {project_id:string, status: string})}
               className="bg-transparent border rounded w-fit "
-              name=""
-              id=""
+              name="status"
             >
-              <option className="bg-black" value="">
+              <option className="bg-black" value="Pending">
                 Pending
               </option>
-              <option className="bg-black" value="">
+              <option className="bg-black" value="Completed">
                 Completed
               </option>
-              <option className="bg-black" value="">
+              <option className="bg-black" value="On Review">
                 On Review
               </option>
             </select>

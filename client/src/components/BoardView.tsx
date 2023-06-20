@@ -1,16 +1,21 @@
 import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { FaCircle, FaPlusCircle } from "react-icons/fa";
 import { IProject } from "../types/project.types";
-import { useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import Project from "./Project";
 
 const BoardView = () => {
-  const {getProjects} = usePlanDashContext()!
-  const { data } = useQuery<{ projects: IProject[] }, Error>(
-    ["projects"],
-    getProjects
-  );
-
+  const { getProjects } = usePlanDashContext()!;
+  const { isLoading, status, error, data } = useQuery<
+    { projects: IProject[]; message: string },
+    Error
+  >({ queryKey: ["projects"], queryFn: getProjects });
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
+  if (status === 'error')  {
+    return "An error has occurred: " + error.message;
+  }
   return (
     <>
       <div className="grid grid-cols-4">
@@ -83,9 +88,8 @@ const BoardView = () => {
           </div>
         </div>
       </div>
-      {data?.message as string && (
+      {(data?.message as string) && (
         <div className="flex flex-col justify-center items-center h-[10rem] p-3  border-[1.5px] border-[#dc3545] rounded">
-
           <h1 className="text-2xl">No Found Projects⚠️</h1>
         </div>
       )}
