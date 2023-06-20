@@ -96,10 +96,10 @@ const NewProject = () => {
                 <option className="bg-[black]" value="Design">
                   Design
                 </option>
-                <option className="bg-[black]" value="">
+                <option className="bg-[black]" value="Research">
                   Research
                 </option>
-                <option className="bg-[black]" value="">
+                <option className="bg-[black]" value="Other">
                   Other
                 </option>
               </select>

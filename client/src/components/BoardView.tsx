@@ -5,17 +5,20 @@ import { useQuery } from "@tanstack/react-query";
 import Project from "./Project";
 
 const BoardView = () => {
-  const { getProjects } = usePlanDashContext()!;
+  const {setProjects, getProjects } = usePlanDashContext()!;
   const { isLoading, status, error, data } = useQuery<
     { projects: IProject[]; message: string },
     Error
   >({ queryKey: ["projects"], queryFn: getProjects });
+
   if (isLoading) {
     return <span>Loading...</span>;
   }
   if (status === "error") {
     return "An error has occurred: " + error.message;
   }
+  setProjects(data.projects)
+
   return (
     <>
       <div className="grid grid-cols-4">
@@ -25,7 +28,7 @@ const BoardView = () => {
               <p className="text-[#eb3983] rounded-full text-xs ">
                 <FaCircle />
               </p>
-              <h3>New Task(0)</h3>
+              <h3>New Task ({data.projects ? data.projects.filter(proj=> proj.status == 'new').length : 0})</h3>
             </div>
             <p className="text-[#eb3983] text-2xl">
               <FaPlusCircle className="cursor-pointer" />
@@ -44,7 +47,7 @@ const BoardView = () => {
               <p className="text-[#fab52d] rounded-full text-xs ">
                 <FaCircle />
               </p>
-              <h3>On Progress(13)</h3>
+              <h3>On Progress ({data.projects ? data.projects.filter(proj=> proj.status == 'Pending').length : 0})</h3>
             </div>
             <p className="text-[#fab52d] text-2xl">
               <FaPlusCircle className="cursor-pointer" />
@@ -64,7 +67,7 @@ const BoardView = () => {
               <p className="text-[#1bd331] rounded-full text-xs ">
                 <FaCircle />
               </p>
-              <h3>On Review(43)</h3>
+              <h3>On Review ({data.projects?data.projects.filter(proj=> proj.status == 'On Review').length: 0})</h3>
             </div>
             <p className="text-[#1bd331] text-2xl">
               <FaPlusCircle className="cursor-pointer" />
@@ -84,7 +87,7 @@ const BoardView = () => {
               <p className=" rounded-full text-xs ">
                 <FaCircle />
               </p>
-              <h3>Complete(78)</h3>
+              <h3>Complete ({data.projects ? data.projects.filter(proj=> proj.status == 'Completed').length : 0})</h3>
             </div>
             <p className="text-2xl">
               <FaPlusCircle className="cursor-pointer" />
