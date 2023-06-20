@@ -1,8 +1,10 @@
 import {
+  archiveProject,
   deleteProject,
   getProjects,
   newProject,
   updateProject,
+  updateStatus,
 } from "../actions/project.actions";
 import { IProject, IProjectsContextType } from "../types/project.types";
 import React, { ReactNode, createContext, useContext, useState } from "react";
@@ -25,8 +27,10 @@ export const PlanDashProvider: React.FC<{ children: ReactNode }> = ({
         getProjects,
         newProject,
         setProjects,
+        updateStatus,
         updateProject,
         deleteProject,
+        archiveProject,
       }}
     >
       {children}

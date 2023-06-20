@@ -4,7 +4,6 @@ import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { VscKebabVertical } from "react-icons/vsc";
 import { useState } from "react";
 import { IProject } from "../types/project.types";
-import { updateStatus } from "../actions/project.actions";
 
 const Project: React.FC<{ project: IProject }> = ({ project }) => {
   const [showMoreDetails, setShowMoreDetails] = useState(false);
@@ -13,7 +12,7 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
   };
 
   const queryClient = useQueryClient();
-  const { deleteProject } = usePlanDashContext()!;
+  const { archiveProject, updateStatus, deleteProject } = usePlanDashContext()!;
 
   const deleteProjectMutation = useMutation({
     mutationFn: (id: string | number) => deleteProject(id),
@@ -23,12 +22,19 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
   });
 
   const updateStatusMutation = useMutation({
-    mutationFn: (data: {project_id: string ,status:string}) => updateStatus(data),
-    onSuccess: ()=> {
-      queryClient.invalidateQueries(["projects"])
-    }
-  })
+    mutationFn: (data: { project_id: string; status: string }) =>
+      updateStatus(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["projects"]);
+    },
+  });
 
+  const archiveProjectMutation = useMutation({
+    mutationFn: (project_id: string) => archiveProject(project_id),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["projects"]);
+    },
+  });
 
   return (
     <div className="relative">
@@ -59,14 +65,26 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
               <FaUserCheck />
               Task Someone
             </p>
-            <p className="cursor-pointer flex items-center gap-[0.5rem]">
+            <p
+              onClick={() => {
+                archiveProjectMutation.mutate(project.project_id),
+                  setShowMoreDetails(false);
+              }}
+              className="cursor-pointer flex items-center gap-[0.5rem]"
+            >
               <FaArchive /> Archive Project
             </p>
             <p className="cursor-pointer flex items-center gap-[0.5rem]">
               <FaBatteryHalf /> Update Status
             </p>
             <select
-            onChange={(e)=> updateStatusMutation.mutate({project_id:project.project_id, status:e.target.value} as unknown as  {project_id:string, status: string})}
+              onChange={(e) => {
+                updateStatusMutation.mutate({
+                  project_id: project.project_id,
+                  status: e.target.value,
+                } as unknown as { project_id: string; status: string }),
+                  setShowMoreDetails(false);
+              }}
               className="bg-transparent border rounded w-fit "
               name="status"
             >
@@ -82,7 +100,9 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
             </select>
             <hr />
             <p
-              onClick={() => deleteProjectMutation.mutate(project.project_id as string)}
+              onClick={() =>
+                deleteProjectMutation.mutate(project.project_id as string)
+              }
               className="cursor-pointer flex items-center gap-[0.5rem] text-[red]"
             >
               <FaTrash />

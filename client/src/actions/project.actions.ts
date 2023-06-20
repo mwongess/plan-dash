@@ -36,6 +36,7 @@ export const updateProject = async (project: IProject) => {
 };
 //END
 
+// START UPDATE STATUS
 export const updateStatus = async (params: {project_id: string, status: string}): Promise<{project_id: string, status: string}>=>{
   const res = await fetch(`${URL + params.project_id + "/status/"+ params.status}`,{
     method: "PATCH",
@@ -47,6 +48,17 @@ export const updateStatus = async (params: {project_id: string, status: string})
   return data
   
 }
+// END
+// START ARCHIVE PROJECT
+export const archiveProject =async (project_id : string) => {
+  const res = await fetch(`${URL + "archives/" + project_id }`,{
+    method: "PUT"
+  })
+  const data = await res.json()
+  return data
+
+}
+// END
 //START DELETE PROJECT
 export const deleteProject = async (id: string | number) => {
   const res = await fetch(`${URL + id}`, { 
