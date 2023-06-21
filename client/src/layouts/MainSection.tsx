@@ -1,9 +1,7 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
-import Projects from "../pages/Projects";
 import { FaGripVertical, FaRegStar, FaSearch } from "react-icons/fa";
-import { useState } from "react";
-import UserCard from "../components/usercard/UserCard";
 import SearchInput from "../components/SearchInput/SearchInput";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import { useState } from "react";
 
 const MainSection = () => {
   const [show, setShow] = useState(false);

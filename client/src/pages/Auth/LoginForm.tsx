@@ -9,9 +9,7 @@ import { onSubmitHandler } from "../../actions/auth.actions";
 import "./auth.css";
 export const LoginForm = () => {
   const {
-    register,
     handleSubmit,
-    formState: { errors },
   } = useForm<ILoginData>({
     resolver: yupResolver(LoginSchema),
   });

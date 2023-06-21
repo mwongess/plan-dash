@@ -1,13 +1,7 @@
 import { FaListOl, FaTable, FaToriiGate } from "react-icons/fa";
-import { getProjects } from "../actions/project.actions";
-import { IProject } from "../types/project.types";
-import { useQuery } from "@tanstack/react-query";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { log } from "console";
 
 const Projects = () => {
-  
-  // return data?.map((project: IProject) => <Project project={project} />);
   return (
     <div>
       <div className="flex  gap-x-8 border-b border-[#393649] pb-3">

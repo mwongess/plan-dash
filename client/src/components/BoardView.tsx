@@ -9,7 +9,7 @@ import Error from "./Error";
 const BoardView = () => {
   const { setProjects, getProjects } = usePlanDashContext()!;
 
-  const { isLoading, status, error, data } = useQuery<
+  const { isLoading, status,data } = useQuery<
     { projects: IProject[]; message: string },
     Error
   >({ queryKey: ["projects"], queryFn: getProjects });

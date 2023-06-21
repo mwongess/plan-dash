@@ -11,10 +11,8 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import NewProject from "../components/NewProject/NewProject";
-import Projects from "../pages/Projects";
-import { getProjects } from "../actions/project.actions";
 import TaskSomeone from "../components/TaskSomeone";
-import Error from "../components/Error";
+import Projects from "../pages/Projects";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
