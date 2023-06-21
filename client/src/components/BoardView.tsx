@@ -3,6 +3,8 @@ import { FaCircle, FaPlusCircle } from "react-icons/fa";
 import { IProject } from "../types/project.types";
 import { useQuery } from "@tanstack/react-query";
 import Project from "./Project";
+import Loading from "./Loading/Loading";
+import Error from "./Error";
 
 const BoardView = () => {
   const {setProjects, getProjects } = usePlanDashContext()!;
@@ -12,10 +14,10 @@ const BoardView = () => {
   >({ queryKey: ["projects"], queryFn: getProjects });
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <Loading/>
   }
   if (status === "error") {
-    return "An error has occurred: " + error.message;
+    return <Error message={error.message}/>;
   }
   setProjects(data.projects)
 
