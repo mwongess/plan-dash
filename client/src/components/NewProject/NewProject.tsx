@@ -7,6 +7,8 @@ import SaveBtn from "../SaveBtn/SaveBtn";
 import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
+import Error from "../Error";
+import Loading from "../Loading/Loading";
 
 const NewProject = () => {
   const navigate = useNavigate();
@@ -29,9 +31,23 @@ const NewProject = () => {
     newProjectMutation.mutate(data as IProjectRequest);
     reset();
   };
-  
+
   return (
     <div className="">
+      <div>
+        {newProjectMutation.isLoading ? (
+          // "Creating Project..."
+          <Loading height='h-[2rem]'/>
+        ) : (
+          <div className="b">
+            {newProjectMutation.isError ? (
+             <Error message="Server can't be reached!"/>
+            ) : null}
+
+            {newProjectMutation.isSuccess ? <div>Todo added!</div> : null}
+          </div>
+        )}
+      </div>
       <form
         action=""
         className="bg-transparent flex flex-col  gap-[1.3rem]"

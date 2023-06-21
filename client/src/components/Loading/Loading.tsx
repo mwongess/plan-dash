@@ -1,7 +1,7 @@
 import "./Loading.css";
-const Loading = () => {
+const Loading: React.FC<{ height: string }> = ({ height }) => {
   return (
-    <div className="flex items-center justify-center w-full h-[4rem] mt-[6rem]">
+    <div className={"flex items-center justify-center w-full  " + height}>
       <div className="loader w-[2em] h-[2em]"></div>
     </div>
   );

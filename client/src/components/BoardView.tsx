@@ -14,7 +14,7 @@ const BoardView = () => {
   >({ queryKey: ["projects"], queryFn: getProjects });
 
   if (isLoading) {
-    return <Loading/>
+    return <Loading height='mt-[6rem] h-[5rem]'/>
   }
   if (status === "error") {
     return <Error message={error.message}/>;
