@@ -13,7 +13,7 @@ function App() {
       <PlanDashProvider>
         <QueryClientProvider client={queryClient}>
           <RouterProvider router={router} />
-          <ReactQueryDevtools/>
+          {/* <ReactQueryDevtools/> */}
         </QueryClientProvider>
       </PlanDashProvider>
     </>

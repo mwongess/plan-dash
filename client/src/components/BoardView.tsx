@@ -5,11 +5,13 @@ import { useQuery } from "@tanstack/react-query";
 import Project from "./Project";
 import Loading from "./Loading/Loading";
 import Error from "./Error";
+import { Link } from "react-router-dom";
+import NoProjects from "./NoProjects";
 
 const BoardView = () => {
   const { setProjects, getProjects } = usePlanDashContext()!;
 
-  const { isLoading, status,data } = useQuery<
+  const { isLoading, status, data } = useQuery<
     { projects: IProject[]; message: string },
     Error
   >({ queryKey: ["projects"], queryFn: getProjects });
@@ -39,9 +41,12 @@ const BoardView = () => {
                 )
               </h3>
             </div>
-            <p className="text-[#eb3983] text-2xl">
+            <Link
+              to="/dashboard/project/new"
+              className="text-[#eb3983] text-2xl"
+            >
               <FaPlusCircle className="cursor-pointer" />
-            </p>
+            </Link>
           </div>
           <div>
             {data?.projects &&
@@ -65,9 +70,12 @@ const BoardView = () => {
                 )
               </h3>
             </div>
-            <p className="text-[#fab52d] text-2xl">
+            <Link
+              to="/dashboard/project/new"
+              className="text-[#fab52d] text-2xl"
+            >
               <FaPlusCircle className="cursor-pointer" />
-            </p>
+            </Link>
           </div>
           <div>
             {data?.projects &&
@@ -92,9 +100,12 @@ const BoardView = () => {
                 )
               </h3>
             </div>
-            <p className="text-[#1bd331] text-2xl">
+            <Link
+              to="/dashboard/project/new"
+              className="text-[#1bd331] text-2xl"
+            >
               <FaPlusCircle className="cursor-pointer" />
-            </p>
+            </Link>
           </div>
           <div>
             {data?.projects &&
@@ -119,9 +130,9 @@ const BoardView = () => {
                 )
               </h3>
             </div>
-            <p className="text-2xl">
+            <Link to="/dashboard/project/new" className="text-2xl">
               <FaPlusCircle className="cursor-pointer" />
-            </p>
+            </Link>
           </div>
           <div>
             {data?.projects &&
@@ -132,17 +143,7 @@ const BoardView = () => {
           </div>
         </div>
       </div>
-      {(data?.message as string) && (
-        <div className=" flex flex-col  h-[60vh] p-3 bg-gradient-to-l from-indigo-500 ">
-          <h1 className="text-2xl">There are no projects to display!</h1>
-          <div className="bg-[url(./proj.png)] bg-no-repeat h-[15rem] bg-right w-full">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum
-            aliquam in laudantium sapiente! In natus dolorum, dolor, ullam
-            fugiat deserunt facilis neque sit ipsa ratione excepturi maxime.
-            Dicta, nisi! Recusandae?
-          </div>
-        </div>
-      )}
+      {(data?.message as string) && <NoProjects />}
     </>
   );
 };

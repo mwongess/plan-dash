@@ -2,12 +2,13 @@ import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { IProject } from "../types/project.types";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
+import { link } from "fs";
 
 const SideNav = () => {
   const { projects } = usePlanDashContext()!;
 
-  let favorites!: IProject[]
-  let archived!: IProject[]
+  let favorites!: IProject[];
+  let archived!: IProject[];
 
   if (projects) {
     favorites = projects.filter((project) => project.isFav);
@@ -22,27 +23,45 @@ const SideNav = () => {
           <div>
             <h3>FAVORITES</h3>
             <div className="ml-[1.5rem]">
-              {favorites && favorites.map((favs) => (
-                <p className="cursor-pointer">{favs.title}</p>
-              ))}
+              {favorites &&
+                favorites.map((favs) => (
+                  <Link
+                    to={"projects/" + favs.project_id}
+                    className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2rem] rounded-[5px]"
+                  >
+                    <p className="ml-[1.5rem]">{favs.title}</p>
+                  </Link>
+                ))}
             </div>
           </div>
         </div>
 
         <div>
           <h3>ALL PROJECTS</h3>
-          <div className="ml-[1.5rem]">
-            {projects && projects.map((project) => (
-              <p className="cursor-pointer">{project.title}</p>
-            ))}
+          <div className="">
+            {projects &&
+              projects.map((project) => (
+                <Link
+                  to={"projects/" + project.project_id}
+                  className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2rem] rounded-[5px]"
+                >
+                  <p className="ml-[1.5rem]">{project.title}</p>
+                </Link>
+              ))}
           </div>
         </div>
         <div>
           <h3>ARCHIVED</h3>
           <div className="ml-[1.5rem]">
-            {archived && archived.map((project) => (
-              <p className="cursor-pointer">{project.title}</p>
-            ))}
+            {archived &&
+              archived.map((project) => (
+                <Link
+                  to={"projects/" + project.project_id}
+                  className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2rem] rounded-[5px]"
+                >
+                  <p className="ml-[1.5rem]">{project.title}</p>
+                </Link>
+              ))}
           </div>
         </div>
         <div>
