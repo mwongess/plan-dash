@@ -7,19 +7,20 @@ import Loading from "./Loading/Loading";
 import Error from "./Error";
 
 const BoardView = () => {
-  const {setProjects, getProjects } = usePlanDashContext()!;
+  const { setProjects, getProjects } = usePlanDashContext()!;
+
   const { isLoading, status, error, data } = useQuery<
     { projects: IProject[]; message: string },
     Error
   >({ queryKey: ["projects"], queryFn: getProjects });
 
   if (isLoading) {
-    return <Loading height='mt-[6rem] h-[5rem]'/>
+    return <Loading height="mt-[6rem] h-[5rem]" />;
   }
   if (status === "error") {
-    return <Error message={error.message}/>;
+    return <Error message="Server Can't Be Reached!!" />;
   }
-  setProjects(data.projects)
+  setProjects(data.projects);
 
   return (
     <>
@@ -30,7 +31,13 @@ const BoardView = () => {
               <p className="text-[#eb3983] rounded-full text-xs ">
                 <FaCircle />
               </p>
-              <h3>New Task ({data.projects ? data.projects.filter(proj=> proj.status == 'new').length : 0})</h3>
+              <h3>
+                New Task (
+                {data.projects
+                  ? data.projects.filter((proj) => proj.status == "new").length
+                  : 0}
+                )
+              </h3>
             </div>
             <p className="text-[#eb3983] text-2xl">
               <FaPlusCircle className="cursor-pointer" />
@@ -49,7 +56,14 @@ const BoardView = () => {
               <p className="text-[#fab52d] rounded-full text-xs ">
                 <FaCircle />
               </p>
-              <h3>On Progress ({data.projects ? data.projects.filter(proj=> proj.status == 'Pending').length : 0})</h3>
+              <h3>
+                On Progress (
+                {data.projects
+                  ? data.projects.filter((proj) => proj.status == "Pending")
+                      .length
+                  : 0}
+                )
+              </h3>
             </div>
             <p className="text-[#fab52d] text-2xl">
               <FaPlusCircle className="cursor-pointer" />
@@ -69,7 +83,14 @@ const BoardView = () => {
               <p className="text-[#1bd331] rounded-full text-xs ">
                 <FaCircle />
               </p>
-              <h3>On Review ({data.projects?data.projects.filter(proj=> proj.status == 'On Review').length: 0})</h3>
+              <h3>
+                On Review (
+                {data.projects
+                  ? data.projects.filter((proj) => proj.status == "On Review")
+                      .length
+                  : 0}
+                )
+              </h3>
             </div>
             <p className="text-[#1bd331] text-2xl">
               <FaPlusCircle className="cursor-pointer" />
@@ -89,7 +110,14 @@ const BoardView = () => {
               <p className=" rounded-full text-xs ">
                 <FaCircle />
               </p>
-              <h3>Complete ({data.projects ? data.projects.filter(proj=> proj.status == 'Completed').length : 0})</h3>
+              <h3>
+                Complete (
+                {data.projects
+                  ? data.projects.filter((proj) => proj.status == "Completed")
+                      .length
+                  : 0}
+                )
+              </h3>
             </div>
             <p className="text-2xl">
               <FaPlusCircle className="cursor-pointer" />
@@ -105,8 +133,14 @@ const BoardView = () => {
         </div>
       </div>
       {(data?.message as string) && (
-        <div className="flex flex-col justify-center items-center h-[10rem] p-3  border-[1.5px] border-[#dc3545] rounded">
-          <h1 className="text-2xl">No Found Projects⚠️</h1>
+        <div className=" flex flex-col  h-[60vh] p-3 bg-gradient-to-l from-indigo-500 ">
+          <h1 className="text-2xl">There are no projects to display!</h1>
+          <div className="bg-[url(./proj.png)] bg-no-repeat h-[15rem] bg-right w-full">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum
+            aliquam in laudantium sapiente! In natus dolorum, dolor, ullam
+            fugiat deserunt facilis neque sit ipsa ratione excepturi maxime.
+            Dicta, nisi! Recusandae?
+          </div>
         </div>
       )}
     </>

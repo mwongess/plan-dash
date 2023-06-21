@@ -37,11 +37,11 @@ const NewProject = () => {
       <div>
         {newProjectMutation.isLoading ? (
           // "Creating Project..."
-          <Loading height='h-[2rem]'/>
+          <Loading height="h-[2rem]" />
         ) : (
           <div className="b">
             {newProjectMutation.isError ? (
-             <Error message="Server can't be reached!"/>
+              <Error message="Server Can't Be reached!!" />
             ) : null}
 
             {newProjectMutation.isSuccess ? <div>Todo added!</div> : null}
@@ -69,7 +69,7 @@ const NewProject = () => {
             name="description"
             id=""
             cols={30}
-            rows={8}
+            rows={7}
           ></textarea>
           {}
         </div>
@@ -83,7 +83,6 @@ const NewProject = () => {
                 name="platform"
                 id=""
               >
-                {/* <option className="bg-[black]" value=""></option> */}
                 <option className="bg-[black]" value="App">
                   App
                 </option>
