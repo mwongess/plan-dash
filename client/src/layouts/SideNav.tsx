@@ -1,7 +1,7 @@
 import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { IProject } from "../types/project.types";
 import { Link } from "react-router-dom";
-import { FaPlus } from "react-icons/fa";
+import { FaArchive, FaCaretDown, FaPlus, FaRegStar, FaTasks } from "react-icons/fa";
 import { link } from "fs";
 
 const SideNav = () => {
@@ -21,13 +21,13 @@ const SideNav = () => {
         <div>
           <img className="h-[6rem]" src="/logo.png" alt="" />
           <div>
-            <h3>FAVORITES</h3>
+            <h3 className="flex justify-between"><span className="flex items-center gap-4"><FaRegStar/>FAVORITES </span></h3>
             <div className="ml-[1.5rem]">
               {favorites &&
                 favorites.map((favs) => (
                   <Link
                     to={"projects/" + favs.project_id}
-                    className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2rem] rounded-[5px]"
+                    className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2.5rem] rounded-[5px]"
                   >
                     <p className="ml-[1.5rem]">{favs.title}</p>
                   </Link>
@@ -37,13 +37,13 @@ const SideNav = () => {
         </div>
 
         <div>
-          <h3>ALL PROJECTS</h3>
+          <h3 className="flex justify-between"><span className="flex items-center gap-4"><FaTasks/>ALL PROJECTS </span></h3>
           <div className="">
             {projects &&
               projects.map((project) => (
                 <Link
                   to={"projects/" + project.project_id}
-                  className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2rem] rounded-[5px]"
+                  className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2.5rem] rounded-[5px]"
                 >
                   <p className="ml-[1.5rem]">{project.title}</p>
                 </Link>
@@ -51,7 +51,7 @@ const SideNav = () => {
           </div>
         </div>
         <div>
-          <h3>ARCHIVED</h3>
+          <h3 className="flex justify-between"><span className="flex items-center gap-4"><FaArchive/>ARCHIVED </span></h3>
           <div className="ml-[1.5rem]">
             {archived &&
               archived.map((project) => (

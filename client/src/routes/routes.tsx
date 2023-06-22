@@ -13,6 +13,7 @@ import {
 import NewProject from "../components/NewProject/NewProject";
 import TaskSomeone from "../components/TaskSomeone";
 import Projects from "../pages/Projects";
+import ProjectDetails from "../components/ProjectDetails";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +28,7 @@ export const router = createBrowserRouter(
           <Route path="list" element={<ListView />} />
         </Route>
         <Route path="project/new" element={<NewProject />} />
+        <Route path="projects/:project_id" element={<ProjectDetails/>}/>
         <Route
           path="project/:project_id/assign/to/:user:id"
           element={<TaskSomeone />}
