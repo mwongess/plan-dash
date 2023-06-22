@@ -1,8 +1,7 @@
+import { FaArchive, FaCaretDown, FaPlus, FaRegStar, FaTasks } from "react-icons/fa";
 import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { IProject } from "../types/project.types";
 import { Link } from "react-router-dom";
-import { FaArchive, FaCaretDown, FaPlus, FaRegStar, FaTasks } from "react-icons/fa";
-import { link } from "fs";
 
 const SideNav = () => {
   const { projects } = usePlanDashContext()!;

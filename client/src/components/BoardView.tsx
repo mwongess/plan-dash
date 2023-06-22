@@ -1,7 +1,5 @@
 import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { FaCircle, FaPlusCircle } from "react-icons/fa";
-import { IProject } from "../types/project.types";
-import { useQuery } from "@tanstack/react-query";
 import Project from "./Project";
 import Loading from "./Loading/Loading";
 import Error from "./Error";
@@ -9,21 +7,15 @@ import { Link } from "react-router-dom";
 import NoProjects from "./NoProjects";
 
 const BoardView = () => {
-  const { setProjects, getProjects } = usePlanDashContext()!;
+  const {data,isLoading,status } = usePlanDashContext()!;
 
-  const { isLoading, status, data } = useQuery<
-    { projects: IProject[]; message: string },
-    Error
-  >({ queryKey: ["projects"], queryFn: getProjects });
-
+  
   if (isLoading) {
     return <Loading height="mt-[6rem] h-[5rem]" />;
   }
   if (status === "error") {
     return <Error message="Server Can't Be Reached!!" />;
   }
-  setProjects(data.projects);
-
   return (
     <>
       <div className="grid grid-cols-4">
@@ -35,7 +27,7 @@ const BoardView = () => {
               </p>
               <h3>
                 New Task (
-                {data.projects
+                {data?.projects
                   ? data.projects.filter((proj) => proj.status == "new").length
                   : 0}
                 )
@@ -63,7 +55,7 @@ const BoardView = () => {
               </p>
               <h3>
                 On Progress (
-                {data.projects
+                {data?.projects
                   ? data.projects.filter((proj) => proj.status == "Pending")
                       .length
                   : 0}
@@ -93,7 +85,7 @@ const BoardView = () => {
               </p>
               <h3>
                 On Review (
-                {data.projects
+                {data?.projects
                   ? data.projects.filter((proj) => proj.status == "On Review")
                       .length
                   : 0}
@@ -123,7 +115,7 @@ const BoardView = () => {
               </p>
               <h3>
                 Complete (
-                {data.projects
+                {data?.projects
                   ? data.projects.filter((proj) => proj.status == "Completed")
                       .length
                   : 0}

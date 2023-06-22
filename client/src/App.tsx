@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { PlanDashProvider } from "./contexts/PlanDashContext";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/routes";
@@ -10,12 +10,12 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <>
-      <PlanDashProvider>
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <PlanDashProvider>
           <RouterProvider router={router} />
           {/* <ReactQueryDevtools/> */}
-        </QueryClientProvider>
-      </PlanDashProvider>
+        </PlanDashProvider>
+      </QueryClientProvider>
     </>
   );
 }

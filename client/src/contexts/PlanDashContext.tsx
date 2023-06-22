@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import {
   archiveProject,
   deleteProject,
@@ -7,7 +8,7 @@ import {
   updateStatus,
 } from "../actions/project.actions";
 import { IProject, IProjectsContextType } from "../types/project.types";
-import React, { ReactNode, createContext, useContext, useState } from "react";
+import React, { ReactNode, createContext, useContext, useEffect, useState } from "react";
 
 export const PlanDashContext = createContext<IProjectsContextType | undefined>(
   undefined
@@ -20,9 +21,22 @@ export const PlanDashProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [projects, setProjects] = useState<IProject[]>([]);
 
+  const { isLoading, status, data } = useQuery<
+    { projects: IProject[]; message: string },
+    Error
+  >({ queryKey: ["projects"], queryFn: getProjects });
+
+  useEffect(()=>{
+    if(data){
+      setProjects(data.projects)
+    }
+  },[data])
   return (
     <PlanDashContext.Provider
       value={{
+        isLoading,
+        status,
+        data,
         projects,
         getProjects,
         newProject,
