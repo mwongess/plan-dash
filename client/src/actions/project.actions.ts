@@ -1,8 +1,5 @@
 import {IProject, IProjectRequest } from "../types/project.types";
 
-// import dotenv from "dotenv";
-// dotenv.config();
-
 const URL = 'http://localhost:3000/projects/'; //Backend API
 
 // START FETCHING PROJECTS

@@ -1,4 +1,4 @@
-import { FaArchive, FaCaretDown, FaPlus, FaRegStar, FaTasks } from "react-icons/fa";
+import { FaArchive, FaPlus, FaRegStar, FaTasks } from "react-icons/fa";
 import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { IProject } from "../types/project.types";
 import { Link } from "react-router-dom";
@@ -20,7 +20,12 @@ const SideNav = () => {
         <div>
           <img className="h-[6rem]" src="/logo.png" alt="" />
           <div>
-            <h3 className="flex justify-between"><span className="flex items-center gap-4"><FaRegStar/>FAVORITES </span></h3>
+            <h3 className="flex justify-between">
+              <span className="flex items-center gap-4">
+                <FaRegStar />
+                FAVORITES{" "}
+              </span>
+            </h3>
             <div className="ml-[1.5rem]">
               {favorites &&
                 favorites.map((favs) => (
@@ -36,7 +41,12 @@ const SideNav = () => {
         </div>
 
         <div>
-          <h3 className="flex justify-between"><span className="flex items-center gap-4"><FaTasks/>ALL PROJECTS </span></h3>
+          <h3 className="flex justify-between">
+            <span className="flex items-center gap-4">
+              <FaTasks />
+              ALL PROJECTS{" "}
+            </span>
+          </h3>
           <div className="">
             {projects &&
               projects.map((project) => (
@@ -50,7 +60,12 @@ const SideNav = () => {
           </div>
         </div>
         <div>
-          <h3 className="flex justify-between"><span className="flex items-center gap-4"><FaArchive/>ARCHIVED </span></h3>
+          <h3 className="flex gap-4">
+            <span className="flex items-center gap-4 border">
+              <FaArchive />
+            </span>
+            ARCHIVED{" "}
+          </h3>
           <div className="ml-[1.5rem]">
             {archived &&
               archived.map((project) => (
