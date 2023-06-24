@@ -1,11 +1,11 @@
 import { ILoginRequest, ISignupRequest, IUser } from "../types/user.types";
+import { LoginSchema, SignUpSchema } from "../schemas/auth.schemas";
 import { Connection } from "../helpers/db.helpers";
 import { Response } from "express";
 import { v4 as uuid } from "uuid";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
-import { LoginSchema, SignUpSchema } from "../schemas/auth.schemas";
 dotenv.config();
 
 const db = new Connection();
@@ -31,7 +31,7 @@ export const SignupNewUser = async (req: ISignupRequest, res: Response) => {
     });
     res.json({ message: "Account created successfully" });
   } catch (error: any) {
-    res.json(error.message);
+    res.json({error: error.message});
   }
 };
 
@@ -55,16 +55,14 @@ export const LoginExistingUser = async (req: ILoginRequest, res: Response) => {
       const { password, ...rest } = item;
       return rest;
     });
-    console.log(payload);
     const token = jwt.sign(payload[0], process.env.JWT_KEY as string, {
       expiresIn: "3600s",
     });
-    console.log(token);
     res.status(200).json({
       message: "Logged in successfully",
       token,
     });
-  } catch (error) {
-    res.json(error);
+  } catch (error:any) {
+    res.json({error: error.message});
   }
 };
