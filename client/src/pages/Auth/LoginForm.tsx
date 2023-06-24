@@ -11,7 +11,6 @@ import Error from "../../components/Error";
 import { useState } from "react";
 import "./auth.css";
 
-
 export const LoginForm = () => {
   const [error, setError] = useState("");
 
@@ -28,15 +27,13 @@ export const LoginForm = () => {
     if (dataFromServer.error) {
       setError(dataFromServer.error);
       setTimeout(() => setError(""), 8000);
+    } else {
+      reset();
     }
     if (dataFromServer.token) {
       const { token } = dataFromServer;
       localStorage.setItem("user", JSON.stringify(token));
       navigate("/dashboard");
-    }
-    if(!dataFromServer.error){
-    reset();
-
     }
   };
 

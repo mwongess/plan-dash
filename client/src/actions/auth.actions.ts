@@ -22,7 +22,8 @@ export const signup = async (user: IsignupData) => {
   if (!res.ok) {
     throw new Error("Network response was not ok!");
   }
-  const data = await res.json();
+  const data = res.json();
+  return data
 };
 
 export const login = async (user: ILoginData) => {
@@ -40,6 +41,8 @@ export const login = async (user: ILoginData) => {
 
   return data;
 };
+
+
 export const getLoggedInUser = () => {
   const user: string = JSON.parse(localStorage.getItem("user") as string);
   return user;

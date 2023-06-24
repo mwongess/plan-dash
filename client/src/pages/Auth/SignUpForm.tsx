@@ -9,10 +9,12 @@ import "./auth.css";
 import { FaBitbucket, FaGithub, FaGitlab } from "react-icons/fa";
 import { useState } from "react";
 import { signup } from "../../actions/auth.actions";
+import Error from "../../components/Error";
 
 export const SignUp = () => {
   const [showOptions, setShowOptions] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [error, setError] = useState('')
   const {
     register,
     handleSubmit,
@@ -22,11 +24,17 @@ export const SignUp = () => {
     resolver: yupResolver(SignupSchema),
   });
 
-  const onSubmitHandler = (data: IsignupData) => {
+  const onSubmitHandler = async(data: IsignupData) => {
     // Send data to server
 
-    signup(data);
-    reset();
+    const dataFromServer = await signup(data);
+    if(dataFromServer.error){
+      setError(dataFromServer.error)
+    }else{
+      
+      reset();
+    }
+  
   };
 
   return (
@@ -38,9 +46,8 @@ export const SignUp = () => {
         onSubmit={handleSubmit(onSubmitHandler)}
         className="flex flex-col sm:items-center sm:justify-center md:w-[50%] h-full p-4"
       >
-      
-
         <div className="w-full md:w-[50%]">
+          {error && <Error message={error} />}
           {showOptions && (
             <>
               <div className="flex flex-col gap-4">
@@ -67,6 +74,7 @@ export const SignUp = () => {
               </div>
             </>
           )}
+
           <div>
             <button
               className="border-2 rounded w-full h-[2.5rem] mt-[1rem] mb-[1.3rem]"
