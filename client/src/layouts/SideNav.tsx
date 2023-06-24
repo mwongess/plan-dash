@@ -16,7 +16,7 @@ const SideNav = () => {
 
   return (
     <div className="h-[95vh] bg-[url('/proje.png')] bg-no-repeat bg-bottom bg-opacity-0">
-      <div className=" flex md:flex-col md:justify-between h-full px-2  ">
+      <div className=" sm:flex flex-col md:justify-between h-full px-2  ">
         <div>
           <img className="h-[6rem]" src="/logo.png" alt="" />
           <div>

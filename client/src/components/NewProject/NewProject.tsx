@@ -73,7 +73,7 @@ const NewProject = () => {
           ></textarea>
           {}
         </div>
-        <div className="flex justify-between">
+        <div className="flex items-center py-[1rem] justify-between">
           <div className="flex gap-3">
             <div>
               <p>Platform</p>
@@ -120,7 +120,10 @@ const NewProject = () => {
               </select>
             </div>
           </div>
-          <SaveBtn />
+          <div>
+            <div>_</div>
+            <SaveBtn />
+          </div>
         </div>
       </form>
     </div>

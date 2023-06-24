@@ -18,9 +18,9 @@ const BoardView = () => {
   }
   return (
     <>
-      <div className="grid grid-cols-4">
+      <div className="lg:grid grid-cols-4">
         <div className="border-r border-[#393649]">
-          <div className="flex items-center justify-between border-b border-[#393649] pr-3 py-3">
+          <div className="flex items-center justify-between border-b border-[#393649] lg:pr-3 py-3">
             <div className="flex items-center gap-2">
               <p className="text-[#eb3983] rounded-full text-xs ">
                 <FaCircle />
@@ -48,7 +48,7 @@ const BoardView = () => {
           </div>
         </div>
         <div className="border-r border-[#393649]">
-          <div className="flex items-center justify-between border-b border-[#393649] p-3 ">
+          <div className="flex items-center justify-between border-b border-[#393649] lg:px-3 py-3">
             <div className="flex items-center gap-2">
               <p className="text-[#fab52d] rounded-full text-xs ">
                 <FaCircle />
@@ -78,7 +78,7 @@ const BoardView = () => {
           </div>
         </div>
         <div className="border-r border-[#393649] ">
-          <div className="flex items-center justify-between border-b border-[#393649] p-3 ">
+          <div className="flex items-center justify-between border-b border-[#393649]  lg:px-3 py-3 ">
             <div className="flex items-center gap-2">
               <p className="text-[#1bd331] rounded-full text-xs ">
                 <FaCircle />
@@ -108,7 +108,7 @@ const BoardView = () => {
           </div>
         </div>
         <div className="">
-          <div className="flex items-center justify-between border-b border-[#393649] p-3">
+          <div className="flex items-center justify-between border-b border-[#393649] lg:px-3 py-3">
             <div className="flex gap-2 items-center">
               <p className=" rounded-full text-xs ">
                 <FaCircle />

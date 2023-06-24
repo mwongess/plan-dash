@@ -37,7 +37,7 @@ const MainSection = () => {
           </div>
         </div>
 
-        <div className="flex  gap-x-8 border-b border-[#393649] pb-3">
+        <div className="hidden md:flex  gap-x-8 border-b border-[#393649] pb-3">
           <NavLink to="" className="">My Organisations</NavLink>
           <Link to="">Projects</Link>
           <Link to="">Team</Link>
