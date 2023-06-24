@@ -4,8 +4,8 @@ export interface ILoginData {
 }
 
 export interface IsignupData{
-    name: string
+    username: string
     email: string
     password: string
-    confirmPassword: string
+    confirmpass: string
 }

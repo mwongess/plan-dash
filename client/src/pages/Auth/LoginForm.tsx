@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 import { FaBitbucket, FaGithub, FaGitlab } from "react-icons/fa";
-import { onSubmitHandler } from "../../actions/auth.actions";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
@@ -9,9 +8,15 @@ import { LoginSchema } from "../../schemas/auth.schema";
 import { ILoginData } from "../../types/auth.types";
 import "./auth.css";
 export const LoginForm = () => {
-  const { handleSubmit } = useForm<ILoginData>({
+  const { register,handleSubmit,reset } = useForm<ILoginData>({
     resolver: yupResolver(LoginSchema),
   });
+
+  const onSubmitHandler = (data:  ILoginData) => {
+    // Send data to server
+    console.log(data)
+    reset();
+  };
 
   return (
     <div className="h-screen sm:flex  ">
@@ -43,13 +48,13 @@ export const LoginForm = () => {
             </button>
           </div>
           <div className="group mb-[1.5rem] ">
-            <input required type="text" className="input w-full" />
+            <input {...register("email")} required type="email" className="input w-full" />
             <span className="highlight "></span>
             <span className="bar w-full"></span>
-            <label>Name</label>
+            <label>Email</label>
           </div>
           <div className="group mb-[2.5rem] ">
-            <input required type="password" className="input w-full" />
+            <input {...register("password")} required type="password" className="input w-full" />
             <span className="highlight"></span>
             <span className="bar w-full"></span>
             <label>Password</label>
