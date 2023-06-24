@@ -37,11 +37,10 @@ export const login = async (user: ILoginData) => {
     throw new Error("Network response was not ok!");
   }
   const data = res.json();
-  // if (data.token) {
-  //   const { token } = data;
-  //   localStorage.setItem("user", JSON.stringify(token));
-  //   const navigate = useNavigate()
-  //   navigate('/dashboard')
-  // }
-  return data
+
+  return data;
+};
+export const getLoggedInUser = () => {
+  const user: string = JSON.parse(localStorage.getItem("user") as string);
+  return user;
 };

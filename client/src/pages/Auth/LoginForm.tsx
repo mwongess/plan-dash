@@ -6,10 +6,12 @@ import { useForm } from "react-hook-form";
 
 import { LoginSchema } from "../../schemas/auth.schema";
 import { ILoginData } from "../../types/auth.types";
-import "./auth.css";
 import { login } from "../../actions/auth.actions";
 import Error from "../../components/Error";
 import { useState } from "react";
+import "./auth.css";
+
+
 export const LoginForm = () => {
   const [error, setError] = useState("");
 
