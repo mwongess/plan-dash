@@ -38,25 +38,27 @@ export const SignUp = () => {
         onSubmit={handleSubmit(onSubmitHandler)}
         className="flex flex-col sm:items-center sm:justify-center md:w-[50%] h-full p-4"
       >
+      
+
         <div className="w-full md:w-[50%]">
           {showOptions && (
             <>
               <div className="flex flex-col gap-4">
                 <button
-                  className="flex items-center justify-center gap-3 w-full border h-[2.5rem]"
+                  className="flex items-center justify-center gap-3 w-full border-2 rounded h-[2.5rem]"
                   type="button"
                 >
                   <FaGithub />
                   Continue with Github
                 </button>
                 <button
-                  className="flex items-center justify-center gap-3 border w-full h-[2.5rem]"
+                  className="flex items-center justify-center gap-3 border-2 rounded w-full h-[2.5rem]"
                   type="button"
                 >
                   <FaGitlab />
                   Continue with GitLab
                 </button>
-                <button className="flex items-center justify-center gap-2 border  h-[2.5rem]">
+                <button className="flex items-center justify-center gap-2 border-2 rounded  h-[2.5rem]">
                   <FaBitbucket /> Continue with BitBucket
                 </button>
                 <h2 className="line-aside border-b">
@@ -67,7 +69,7 @@ export const SignUp = () => {
           )}
           <div>
             <button
-              className="border w-full h-[2.5rem] mt-[1rem] mb-[1.3rem]"
+              className="border-2 rounded w-full h-[2.5rem] mt-[1rem] mb-[1.3rem]"
               type="button"
               onClick={() => {
                 setShowForm(!showForm);

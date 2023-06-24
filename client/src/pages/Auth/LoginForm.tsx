@@ -8,30 +8,39 @@ import { LoginSchema } from "../../schemas/auth.schema";
 import { ILoginData } from "../../types/auth.types";
 import "./auth.css";
 import { login } from "../../actions/auth.actions";
+import Error from "../../components/Error";
+import { useState } from "react";
 export const LoginForm = () => {
-  const navigate = useNavigate()
+  const [error, setError] = useState("");
 
-  const { register,handleSubmit,reset } = useForm<ILoginData>({
+  const navigate = useNavigate();
+
+  const { register, handleSubmit, reset } = useForm<ILoginData>({
     resolver: yupResolver(LoginSchema),
   });
 
-  const onSubmitHandler = async(data:  ILoginData) => {
-
+  const onSubmitHandler = async (data: ILoginData) => {
     // Send data to server
-    console.log(data)
-    const dataFromServer = await login(data)
-    console.log(dataFromServer);
-    if(dataFromServer.token){
-        const { token } = dataFromServer;
-        localStorage.setItem("user", JSON.stringify(token));
-        navigate('/dashboard')
+    console.log(data);
+    const dataFromServer = await login(data);
+    if (dataFromServer.error) {
+      setError(dataFromServer.error);
+      setTimeout(() => setError(""), 8000);
     }
+    if (dataFromServer.token) {
+      const { token } = dataFromServer;
+      localStorage.setItem("user", JSON.stringify(token));
+      navigate("/dashboard");
+    }
+    if(!dataFromServer.error){
     reset();
+
+    }
   };
 
   return (
     <div className="h-screen sm:flex  ">
-      <div className= "clip-path w-full h-[15%] md:h-full sm:w-[50%] flex items-center justify-center bg-[#03103c] ">
+      <div className="clip-path w-full h-[15%] md:h-full sm:w-[50%] flex items-center justify-center bg-[#03103c] ">
         <img className="h-[6rem] md:h-auto" src="/se.png" alt="" />
       </div>
       <form
@@ -39,33 +48,44 @@ export const LoginForm = () => {
         onSubmit={handleSubmit(onSubmitHandler)}
       >
         <div className="sm:w-[50%] w-full">
+          {error && <Error message={error} />}
           <div className="flex flex-col gap-2 justify-between mb-[1.5rem]">
             <button
-              className="flex items-center justify-center gap-3 border h-[2.5rem] w-full"
+              className="flex items-center justify-center gap-3 border-2 rounded h-[2.5rem] w-full"
               type="button"
             >
               <FaGithub />
-             Continue with Github
+              Continue with Github
             </button>
             <button
-              className="flex items-center justify-center gap-3 border h-[2.5rem]  w-full"
+              className="flex items-center justify-center gap-3 border-2 rounded h-[2.5rem]  w-full"
               type="button"
             >
               <FaGitlab />
-             Continue with GitLab
+              Continue with GitLab
             </button>
-            <button className="flex items-center justify-center gap-2 border  h-[2.5rem]">
-            <FaBitbucket/>  Continue with BitBucket
+            <button className="flex items-center justify-center gap-2 border-2 rounded  h-[2.5rem]">
+              <FaBitbucket /> Continue with BitBucket
             </button>
           </div>
           <div className="group mb-[1.5rem] ">
-            <input {...register("email")} required type="email" className="input w-full" />
+            <input
+              {...register("email")}
+              required
+              type="email"
+              className="input w-full"
+            />
             <span className="highlight "></span>
             <span className="bar w-full"></span>
             <label>Email</label>
           </div>
           <div className="group mb-[2.5rem] ">
-            <input {...register("password")} required type="password" className="input w-full" />
+            <input
+              {...register("password")}
+              required
+              type="password"
+              className="input w-full"
+            />
             <span className="highlight"></span>
             <span className="bar w-full"></span>
             <label>Password</label>
