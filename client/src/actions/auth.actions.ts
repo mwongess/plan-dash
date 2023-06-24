@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { ILoginData, IsignupData } from "../types/auth.types";
 
 // export const onSubmitHandler = (data: ILoginData | IsignupData) => {
@@ -6,35 +7,41 @@ import { ILoginData, IsignupData } from "../types/auth.types";
 //   reset();
 // };
 
-const URL = "http://localhost:3000/auth/"
+const URL = "http://localhost:3000/auth/";
 
-export const signup = async(user:IsignupData)=> {
-  const {username, email,password} = user
-  const name = username
-  const res= await fetch(`${URL}signup`, {
+export const signup = async (user: IsignupData) => {
+  const { username, email, password } = user;
+  const name = username;
+  const res = await fetch(`${URL}signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({name,email,password})
-  })
+    body: JSON.stringify({ name, email, password }),
+  });
   if (!res.ok) {
-    throw new Error('Network response was not ok!')
+    throw new Error("Network response was not ok!");
   }
-  const data = await res.json()
-}
+  const data = await res.json();
+};
 
-
-export const login = async(user: ILoginData)=>{
-  const res= await fetch(`${URL}login`, {
+export const login = async (user: ILoginData) => {
+  const res = await fetch(`${URL}login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(user)
-  })
+    body: JSON.stringify(user),
+  });
   if (!res.ok) {
-    throw new Error('Network response was not ok!')
+    throw new Error("Network response was not ok!");
   }
-  const data = await res.json()
-}
+  const data = res.json();
+  // if (data.token) {
+  //   const { token } = data;
+  //   localStorage.setItem("user", JSON.stringify(token));
+  //   const navigate = useNavigate()
+  //   navigate('/dashboard')
+  // }
+  return data
+};

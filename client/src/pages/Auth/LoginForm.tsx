@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FaBitbucket, FaGithub, FaGitlab } from "react-icons/fa";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -7,14 +7,25 @@ import { useForm } from "react-hook-form";
 import { LoginSchema } from "../../schemas/auth.schema";
 import { ILoginData } from "../../types/auth.types";
 import "./auth.css";
+import { login } from "../../actions/auth.actions";
 export const LoginForm = () => {
+  const navigate = useNavigate()
+
   const { register,handleSubmit,reset } = useForm<ILoginData>({
     resolver: yupResolver(LoginSchema),
   });
 
-  const onSubmitHandler = (data:  ILoginData) => {
+  const onSubmitHandler = async(data:  ILoginData) => {
+
     // Send data to server
     console.log(data)
+    const dataFromServer = await login(data)
+    console.log(dataFromServer);
+    if(dataFromServer.token){
+        const { token } = dataFromServer;
+        localStorage.setItem("user", JSON.stringify(token));
+        navigate('/dashboard')
+    }
     reset();
   };
 
