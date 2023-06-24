@@ -7,6 +7,7 @@ import { IProject } from "../types/project.types";
 
 const Project: React.FC<{ project: IProject }> = ({ project }) => {
   const [showMoreDetails, setShowMoreDetails] = useState(false);
+  
   const toggleMoreDetails = () => {
     setShowMoreDetails((prevState) => !prevState);
   };

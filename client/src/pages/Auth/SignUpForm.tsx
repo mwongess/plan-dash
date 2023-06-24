@@ -22,15 +22,15 @@ export const SignUp = () => {
   });
 
   return (
-    <div className="md:flex justify-center items-center  h-screen">
+    <div className="md:flex justify-center items-center  sm:h-screen">
       <div className="clip-path w-full md:w-[50%] h-[15%] md:h-full bg-[#03103c] flex items-center justify-center">
         <img className="h-[6rem] md:h-auto" src="/se.png" alt=""  />
       </div>
       <form
         onSubmit={handleSubmit(onSubmitHandler)}
-        className="flex flex-col items-center justify-center md:w-[50%] h-full"
+        className="flex flex-col sm:items-center sm:justify-center md:w-[50%] h-full p-4"
       >
-        <div className="md:w-[50%]">
+        <div className="w-full md:w-[50%]">
           {showOptions && (
             <>
               <div className="flex flex-col gap-4">
@@ -57,7 +57,7 @@ export const SignUp = () => {
           )}
           <div>
             <button
-              className="border w-full h-[2.5rem] mt-[1rem]"
+              className="border w-full h-[2.5rem] mt-[1rem] mb-[1.3rem]"
               type="button"
               onClick={() => {
                 setShowForm(!showForm);
