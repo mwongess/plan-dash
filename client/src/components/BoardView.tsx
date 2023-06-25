@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 import NoProjects from "./NoProjects";
 
 const BoardView = () => {
-  const {data,isLoading,status } = usePlanDashContext()!;
+  const {data,isLoading,status,error } = usePlanDashContext()!;
 
   
   if (isLoading) {
     return <Loading height="mt-[6rem] h-[5rem]" />;
   }
   if (status === "error") {
-    return <Error message="Server Can't Be Reached!!" />;
+    return <Error message={error?.message!}/>;
   }
   return (
     <>

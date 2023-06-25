@@ -22,7 +22,7 @@ export const PlanDashProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [projects, setProjects] = useState<IProject[]>([]);
 
-  const { isLoading, status, data } = useQuery<
+  let { isLoading, status, data ,error} = useQuery<
     { projects: IProject[]; message: string },
     Error
   >({ queryKey: ["projects"], queryFn: getProjects });
@@ -40,6 +40,7 @@ export const PlanDashProvider: React.FC<{ children: ReactNode }> = ({
       value={{
         isLoading,
         status,
+        error,
         data,
         projects,
         getProjects,

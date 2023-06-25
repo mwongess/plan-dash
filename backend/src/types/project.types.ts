@@ -1,3 +1,5 @@
+import { IUserInfo } from "./user.types";
+
 export interface IProject {
   project_id: string;
   title: string;
@@ -7,10 +9,11 @@ export interface IProject {
 }
 
 export interface IProjectRequest {
-  body: {
+  body?: {
     title: string;
     description: string;
     platform: string
     scope: string;
   };
+  user?: IUserInfo
 }

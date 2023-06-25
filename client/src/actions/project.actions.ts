@@ -1,14 +1,25 @@
 import {IProject, IProjectRequest } from "../types/project.types";
+import { getLoggedInUser } from "./auth.actions";
 
 const URL = 'http://localhost:3000/projects/'; //Backend API
 
+const token = getLoggedInUser()
+
 // START FETCHING PROJECTS
 export const getProjects = async (): Promise<{projects: IProject[] , message: string}> => {
-  const res = await fetch(URL);
+  const res = await fetch(URL,{
+    method: "GET",
+    headers: {
+      token: token
+    }
+  });
   if (!res.ok) {
     throw new Error('Network response was not ok')
   }
   const data = await res.json();
+  if(data.error){
+    throw new Error(data.error)
+  }
   return data;
 };
 // END
@@ -19,6 +30,7 @@ export const newProject = async (project: IProjectRequest): Promise<IProjectRequ
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      token: token
     },
     body: JSON.stringify(project),
   });
@@ -39,6 +51,7 @@ export const updateStatus = async (params: {project_id: string, status: string})
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
+      token: token
     }
   })
   const data = await res.json()
@@ -62,6 +75,7 @@ export const deleteProject = async (id: string | number) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      token: token
     },
    });
   const data = await res.json();

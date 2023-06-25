@@ -3,13 +3,15 @@ import { IProjectRequest } from "../types/project.types";
 import { Connection } from "../helpers/db.helpers";
 import { Request, Response } from "express";
 import { v4 as uuid } from "uuid";
+import { IUserInfo } from "../types/user.types";
 
 const db = new Connection();
 
 export const NewProject = (req: IProjectRequest, res: Response) => {
   try {
     const project_id = uuid();
-    const { title, description,platform, scope } = req.body;
+    const {user_id} = req.user!
+    const { title, description,platform, scope } = req.body!;
     const { error, value } = ProjectSchema.validate(req.body);
     if (error) {
       return res.json({ error: error.details[0].message });
@@ -20,15 +22,17 @@ export const NewProject = (req: IProjectRequest, res: Response) => {
       description,
       platform,
       scope,
+      user_id
     });
     res.status(200).json({ message: "Project created successfully" });
   } catch (error) {
     res.json({ error: error });
   }
 };
-export const GetProjects = async (req: Request, res: Response) => {
+export const GetProjects = async (req: IProjectRequest, res: Response) => {
   try {
-    const { recordset } = await db.executeProcedure("GetProjects");
+    const {user_id} = req.user!
+    const { recordset } = await db.executeProcedure("GetProjects",{user_id});
     if (!recordset[0]) {
       return res.json({ message: "No projects found" });
     }
@@ -108,3 +112,19 @@ export const UpdateStatus = async(req: Request, res: Response) =>{
   }
 }
  
+
+export const ArchiveProject = async(req: Request, res: Response)=>{
+  try {
+    const {project_id} = req.params 
+    const { recordset } = await db.executeProcedure("GetProject", {
+      project_id,
+    });
+    if (!recordset[0]) {
+      return res.status(404).json({ message: "Project not found" });
+    }
+    await db.executeProcedure("ArchiveProject", {project_id})
+    res.json({message: "Project has been archived"})
+  } catch (error:any) {
+    res.json({error: error.message})
+  }
+}

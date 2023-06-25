@@ -17,10 +17,14 @@ export interface IProject {
   isFav: boolean;
 }
 
+export interface error extends Error{
+  message: string
+}
 export interface IProjectsContextType {
   isLoading: boolean;
   status: string;
   data?: { projects: IProject[]; message: string };
+  error: Error | null
   projects: IProject[];
   getProjects: () => Promise<{ projects: IProject[]; message: string }>;
   newProject: (project: IProjectRequest) => Promise<IProjectRequest>;

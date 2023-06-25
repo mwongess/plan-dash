@@ -1,4 +1,5 @@
 import { Request } from "express";
+import { string } from "joi";
 
 export interface ISignupRequest extends Request {
   body: {
@@ -16,8 +17,17 @@ export interface ILoginRequest extends Request {
 }
 
 export interface IUser {
-  user_id: string | number
+  user_id: string | number;
   name: string;
   email: string;
   password: string;
+}
+
+export interface IUserInfo {
+  user_id: string;
+  name: string;
+  email: string;
+  role: string;
+  iat: number;
+  exp: number;
 }

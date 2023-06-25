@@ -20,6 +20,7 @@ END
 DROP PROCEDURE NewProject
 
 CREATE PROCEDURE NewProject
+    @user_id VARCHAR(200),
     @project_id VARCHAR(200),
     @title VARCHAR(50),
     @platform VARCHAR(200),
@@ -28,7 +29,7 @@ CREATE PROCEDURE NewProject
 AS
 BEGIN
     INSERT INTO projects
-        (project_id, title,platform, scope, description)
+        (project_id, title,platform, scope, description,user_id)
     VALUES
-        (@project_id, @title,@platform, @scope, @description);
+        (@project_id, @title,@platform, @scope, @description, @user_id);
 END;

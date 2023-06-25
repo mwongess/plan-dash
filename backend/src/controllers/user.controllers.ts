@@ -20,7 +20,7 @@ export const SignupNewUser = async (req: ISignupRequest, res: Response) => {
     }
     const { recordset } = await db.executeProcedure("GetUser", { email });
     if (recordset.length > 0) {
-      return res.json({ error: "Account already exists" });
+      return res.json({ error: "Account already exists,use another email!" });
     }
     password = await bcrypt.hash(password, 10);
     await db.executeProcedure("NewUser", {
@@ -45,11 +45,11 @@ export const LoginExistingUser = async (req: ILoginRequest, res: Response) => {
     const user: IUser[] = (await db.executeProcedure("GetUser", { email }))
       .recordset;
     if (!user[0]) {
-      return res.json({ error: "Account doesnt exist" });
+      return res.json({ error: "Account doesnt exist!" });
     }
     const validpassword = await bcrypt.compare(password, user[0].password);
     if (!validpassword) {
-      return res.json({ error: "Try another password" });
+      return res.json({ error: "Try again with another password!" });
     }
     const payload = user.map((item) => {
       const { password, ...rest } = item;

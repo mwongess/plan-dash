@@ -9,6 +9,11 @@ import { ILoginData, IsignupData } from "../types/auth.types";
 
 const URL = "http://localhost:3000/auth/";
 
+export const getLoggedInUser = () => {
+  const user: string = JSON.parse(localStorage.getItem("user") as string);
+  return user;
+};
+
 export const signup = async (user: IsignupData) => {
   const { username, email, password } = user;
   const name = username;
@@ -43,7 +48,4 @@ export const login = async (user: ILoginData) => {
 };
 
 
-export const getLoggedInUser = () => {
-  const user: string = JSON.parse(localStorage.getItem("user") as string);
-  return user;
-};
+

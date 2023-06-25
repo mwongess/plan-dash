@@ -10,10 +10,11 @@ END;
 DROP PROCEDURE GetProjects;
 
 CREATE PROCEDURE GetProjects
+    @user_id VARCHAR(200)
 AS
 BEGIN
     SELECT *
-    FROM projects;
+    FROM projects WHERE user_id = @user_id
 END;
 
 -- 
