@@ -57,16 +57,17 @@ export const GetProject = async (req: Request, res: Response) => {
     res.json({ error: error.message });
   }
 };
-export const DeleteProject = async (req: Request, res: Response) => {
+export const DeleteProject = async (req: IProjectRequest, res: Response) => {
   try {
     const { project_id } = req.params;
+    const {user_id} = req.user!
     const { recordset } = await db.executeProcedure("GetProject", {
       project_id,
     });
     if (!recordset[0]) {
       return res.status(404).json({ message: "Project not found" });
     }
-    await db.executeProcedure("DeleteProject", { project_id });
+    await db.executeProcedure("DeleteProject", { project_id ,user_id});
     res.status(200).json({ message: "Project deleted successfully" });
   } catch (error: any) {
     res.json(error.message)
@@ -96,16 +97,17 @@ export const AssignProject = async (req: Request, res: Response) => {
   }
 };
 
-export const UpdateStatus = async(req: Request, res: Response) =>{
+export const UpdateStatus = async(req: IProjectRequest, res: Response) =>{
   try {
     const {project_id,status} = req.params
+    const {user_id} = req.user!
     const { recordset } = await db.executeProcedure("GetProject", {
       project_id,
     });
     if (!recordset[0]) {
       return res.status(404).json({ message: "Project not found" });
     }
-    await db.executeProcedure("UpdateStatus", {project_id,status})
+    await db.executeProcedure("UpdateStatus", {project_id,status,user_id})
     res.status(200).json({message: `Project status updated to ${status}`})
   } catch (error:any) {
     res.json(error.message)

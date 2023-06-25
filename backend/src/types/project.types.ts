@@ -16,4 +16,5 @@ export interface IProjectRequest {
     scope: string;
   };
   user?: IUserInfo
+  params?: any 
 }
