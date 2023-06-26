@@ -1,6 +1,7 @@
 import { FaGripVertical, FaRegStar, FaSearch } from "react-icons/fa";
 import SearchInput from "../components/SearchInput/SearchInput";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import UserCard from "../components/usercard/UserCard";
 import { useState } from "react";
 
 const MainSection = () => {
@@ -13,7 +14,7 @@ const MainSection = () => {
             <div>
               <SearchInput />
             </div>
-            <div className="flex items-center gap-[2rem]">
+            <div className="flex items-center gap-[2rem] relative">
               {/* <div className="">
                 <h1 className="text-xl">{new Date().toDateString()}</h1>
               </div> */}
@@ -31,7 +32,7 @@ const MainSection = () => {
                     alt=""
                   />
                 </div>
-                {/* {show && <UserCard />} */}
+                {show && <UserCard />}
               </div>
             </div>
           </div>

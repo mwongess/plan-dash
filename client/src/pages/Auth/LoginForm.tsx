@@ -38,7 +38,7 @@ export const LoginForm = () => {
       localStorage.setItem("user", JSON.stringify(token));
       navigate("/dashboard");
     }
-    queryClient.invalidateQueries(["projects"])
+    // queryClient.invalidateQueries(["projects"])
   };
 
   return (

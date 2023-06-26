@@ -6,21 +6,32 @@ const URL = 'http://localhost:3000/projects/'; //Backend API
 const token = getLoggedInUser()
 
 // START FETCHING PROJECTS
-export const getProjects = async (): Promise<{projects: IProject[] , message: string}> => {
-  const res = await fetch(URL,{
-    method: "GET",
-    headers: {
-      token: token
+export const getProjects = async () => {
+  try {
+    const token = getLoggedInUser()
+
+    if(token){
+      const res = await fetch(URL,{
+        method: "GET",
+        headers: {
+          token: token
+        }
+      });
+      if (!res.ok) {
+        throw new Error('Network response was not ok')
+      }
+      const data = await res.json();
+      if(data.error){
+        throw new Error(data.error)
+      }
+      return data;
     }
-  });
-  if (!res.ok) {
-    throw new Error('Network response was not ok')
+  
+  } catch (error) {
+    console.error(error)
   }
-  const data = await res.json();
-  if(data.error){
-    throw new Error(data.error)
-  }
-  return data;
+  
+ 
 };
 // END
 
