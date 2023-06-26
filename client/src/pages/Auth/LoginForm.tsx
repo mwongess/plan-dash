@@ -10,8 +10,11 @@ import { login } from "../../actions/auth.actions";
 import Error from "../../components/Error";
 import { useState } from "react";
 import "./auth.css";
+import { useQueryClient } from "@tanstack/react-query";
 
 export const LoginForm = () => {
+  const queryClient = useQueryClient();
+
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
@@ -35,6 +38,7 @@ export const LoginForm = () => {
       localStorage.setItem("user", JSON.stringify(token));
       navigate("/dashboard");
     }
+    queryClient.invalidateQueries(["projects"])
   };
 
   return (

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import MainSection from "./MainSection";
 import SideNav from "./SideNav";
 import { useEffect } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Dashboard = () => {
   const navigate = useNavigate();
