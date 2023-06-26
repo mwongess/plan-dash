@@ -11,7 +11,6 @@ import { usePlanDashContext } from "../contexts/PlanDashContext";
 const Dashboard = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  // const {setProjects} = usePlanDashContext()!
 
   const user: string = JSON.parse(localStorage.getItem("user") as string);
 
@@ -21,19 +20,8 @@ const Dashboard = () => {
     }
   }, [user]);
   
-  //   let { isLoading, status, data ,error} = useQuery<
-  //   { projects: IProject[]; message: string },
-  //   Error
-  // >({ queryKey: ["projects"], queryFn: getProjects });
-
-  // useEffect(()=>{
-  //   if(data){
-  //     setProjects(data.projects)
-  //   }
-
-  // },[data])
   if (user) {
-    queryClient.invalidateQueries(["projects"]);
+    queryClient.invalidateQueries(["projects"]);//Trigger refetch
     return (
       <>
         <div className="sm:flex justify-between min-h-screen bg-[#0f172a] text-white px-4 pt-4 pb-[6rem]">
