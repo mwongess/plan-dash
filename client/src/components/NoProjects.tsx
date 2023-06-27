@@ -1,6 +1,6 @@
 const NoProjects = () => {
   return (
-    <div className=" flex flex-col border border-[#393649] rounded-[5px] col-span-4 justify-center  p-3 bg-gradient-to-l from-indigo-500 ">
+    <div className=" flex flex-col border-2 border-[#393649] rounded-b-[10px] col-span-4 justify-center  p-3 bg-gradient-to-l from-indigo-500 ">
       <div className="font-bold ">
         <h1 className="text-2xl text-[30px] mb-[1rem]">
           Your projects displays here!

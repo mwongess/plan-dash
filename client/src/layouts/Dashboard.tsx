@@ -17,7 +17,8 @@ const Dashboard = () => {
   }, [user]);
   
   if (user) {
-    queryClient.invalidateQueries(["projects"]);//Trigger refetch
+
+      queryClient.invalidateQueries(["projects"]);//Trigger refetch
     return (
       <>
         <div className="sm:flex justify-between min-h-screen bg-[#0f172a] text-white px-4 pt-4 pb-[6rem]">

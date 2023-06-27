@@ -28,8 +28,8 @@ export const PlanDashProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [projects, setProjects] = useState<IProject[]>([]);
-  const token = getLoggedInUser();
-  let { isLoading, status, data, error } = useQuery<
+
+  const { isLoading, status, data, error } = useQuery<
     { projects: IProject[]; message: string },
     Error
   >({
