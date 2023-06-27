@@ -1,4 +1,4 @@
-import { projectsRouter } from './routes/projects.router'
+import { projectsRouter } from './routes/projects.routes'
 import  express, { Application,json } from 'express'
 import { userRouter } from './routes/user.routes'
 import { startServer } from './lib/boot'

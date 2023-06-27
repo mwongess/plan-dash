@@ -1,10 +1,12 @@
 const NoProjects = () => {
   return (
-    <div className=" flex flex-col  h-[50vh] justify-center  p-3 bg-gradient-to-l from-indigo-500 ">
+    <div className=" flex flex-col border border-[#393649] rounded-[5px] col-span-4 justify-center  p-3 bg-gradient-to-l from-indigo-500 ">
       <div className="font-bold ">
         <h1 className="text-2xl text-[30px] mb-[1rem]">
-          There are no projects to display!
+          Your projects displays here!
         </h1>
+        <h1 className="font-2xl">Start Creating Projects ↙️</h1>
+
       </div>
       <div className="bg-[url(./proj.png)] bg-no-repeat h-[90%] bg-right w-full ">
         <div>
@@ -17,7 +19,6 @@ const NoProjects = () => {
             projects, this app empowers you with the tools and insights
             necessary to stay organized, productive, and in control.
           </p>
-          <h1 className="font-2xl">Get started today ↙️</h1>
         </div>
       </div>
     </div>

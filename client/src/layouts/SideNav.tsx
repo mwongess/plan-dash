@@ -61,10 +61,10 @@ const SideNav = () => {
         </div>
         <div>
           <h3 className="flex gap-4">
-            <span className="flex items-center gap-4 border">
+            <span className="flex items-center gap-4">
               <FaArchive />
             </span>
-            ARCHIVED{" "}
+            ARCHIVED
           </h3>
           <div className="ml-[1.5rem]">
             {archived &&

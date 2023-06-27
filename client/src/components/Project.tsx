@@ -4,10 +4,11 @@ import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { VscKebabVertical } from "react-icons/vsc";
 import { useState } from "react";
 import { IProject } from "../types/project.types";
+import MoreOptions from "./Cards/MoreOptions";
 
 const Project: React.FC<{ project: IProject }> = ({ project }) => {
   const [showMoreDetails, setShowMoreDetails] = useState(false);
-  
+
   const toggleMoreDetails = () => {
     setShowMoreDetails((prevState) => !prevState);
   };
@@ -77,67 +78,14 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
         </div>
 
         <div className=" border-t border-[#393649] p-2 cursor-pointer">
-          <p className="flex items-center">
-            + 
-            Add Subtask
-          </p>
+          <p className="flex items-center">+ Add Subtask</p>
         </div>
       </div>
       {showMoreDetails && (
-        <div className="absolute top-0 left-0 z-[100] mt-[2rem] flex  p-4 w-full  h-[fit-content] rounded">
-          <div className="w-[20%]"></div>
-          <div className="flex flex-col items-center gap-[0.5rem] bg-[#1c2333] min-w-[80%] p-3 rounded-[7px] text-center">
-            <p className="cursor-pointer flex items-center gap-[0.5rem] ">
-              <FaUserCheck />
-              Task Someone
-            </p>
-            <p
-              onClick={() => {
-                archiveProjectMutation.mutate(project.project_id),
-                  setShowMoreDetails(false);
-              }}
-              className="cursor-pointer flex items-center gap-[0.5rem]"
-            >
-              <FaArchive /> Archive Project
-            </p>
-            <p className="cursor-pointer flex items-center gap-[0.5rem]">
-              <FaBatteryHalf /> Update Status
-            </p>
-            <select
-              onChange={(e) => {
-                updateStatusMutation.mutate({
-                  project_id: project.project_id,
-                  status: e.target.value,
-                } as unknown as { project_id: string; status: string }),
-                  setShowMoreDetails(false);
-              }}
-              className="bg-transparent border rounded w-fit "
-              name="status"
-            >
-              <option className="bg-black">Status</option>
-              <option className="bg-black" value="Pending">
-                Pending
-              </option>
-
-              <option className="bg-black" value="On Review">
-                On Review
-              </option>
-              <option className="bg-black" value="Completed">
-                Completed
-              </option>
-            </select>
-            <hr />
-            <p
-              onClick={() =>
-                deleteProjectMutation.mutate(project.project_id as string)
-              }
-              className="cursor-pointer flex items-center gap-[0.5rem] text-[red]"
-            >
-              <FaTrash />
-              Delete Project
-            </p>
-          </div>
-        </div>
+        <MoreOptions
+          project={project}
+          setShowMoreDetails={setShowMoreDetails}
+        />
       )}
     </div>
   );

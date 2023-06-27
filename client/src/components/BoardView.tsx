@@ -18,7 +18,7 @@ const BoardView = () => {
   }
   return (
     <>
-      <div className="lg:grid grid-cols-4">
+      <div className="lg:grid grid-cols-4 ">
         <div className="border-r border-[#393649]">
           <div className="flex items-center justify-between border-b border-[#393649] lg:pr-3 py-3">
             <div className="flex items-center gap-2">
@@ -43,7 +43,7 @@ const BoardView = () => {
           <div>
             {data?.projects &&
               data?.projects.map(
-                (proj) => proj.status === "new" && <Project project={proj} />
+                (proj) => proj.status === "new" && <Project key={proj.project_id} project={proj} />
               )}
           </div>
         </div>
@@ -73,7 +73,7 @@ const BoardView = () => {
             {data?.projects &&
               data?.projects.map(
                 (proj) =>
-                  proj.status === "Pending" && <Project project={proj} />
+                  proj.status === "Pending" && <Project key={proj.project_id} project={proj} />
               )}
           </div>
         </div>
@@ -103,7 +103,7 @@ const BoardView = () => {
             {data?.projects &&
               data?.projects.map(
                 (proj) =>
-                  proj.status === "On Review" && <Project project={proj} />
+                  proj.status === "On Review" && <Project key={proj.project_id} project={proj} />
               )}
           </div>
         </div>
@@ -130,12 +130,12 @@ const BoardView = () => {
             {data?.projects &&
               data?.projects.map(
                 (proj) =>
-                  proj.status === "Completed" && <Project project={proj} />
+                  proj.status === "Completed" && <Project key={proj.project_id} project={proj} />
               )}
           </div>
         </div>
-      </div>
       {(data?.message as string) && <NoProjects />}
+      </div>
     </>
   );
 };
