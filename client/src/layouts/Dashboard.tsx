@@ -1,12 +1,8 @@
-// import { useQueryClient } from "@tanstack/react-query";
+import {  useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import MainSection from "./MainSection";
 import SideNav from "./SideNav";
 import { useEffect } from "react";
-import { getProjects } from "../actions/project.actions";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { IProject } from "../types/project.types";
-import { usePlanDashContext } from "../contexts/PlanDashContext";
 
 const Dashboard = () => {
   const navigate = useNavigate();
