@@ -23,7 +23,7 @@ export const VerifyToken = (
     const decoded = jwt.verify(token, JWT_KEY!) as IUserInfo;
     req.user = decoded;
   } catch (error: any) {
-    return res.json(error.message);
+    return res.json({error: error.message});
   }
   next();
 };

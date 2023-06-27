@@ -19,11 +19,14 @@ export const getProjects = async () => {
       });
       const data = await res.json();
       if (data.error) {
+        if(data.error = "jwt expired"){
+          throw new Error("Your session expired,please login again!");
+
+        }
         throw new Error(data.error);
       }
       return data;
     }
-    return [];
   } catch (error: any) {
     if (error == "TypeError: Failed to fetch") {
       throw new Error("Server cant be reached!");
