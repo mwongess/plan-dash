@@ -30,7 +30,7 @@ const SideNav = () => {
               {favorites &&
                 favorites.map((favs) => (
                   <Link
-                    to={"projects/" + favs.project_id}
+                    to={"project/" + favs.project_id + '/details'}
                     className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2.5rem] rounded-[5px]"
                   >
                     <p className="ml-[1.5rem]">{favs.title}</p>
@@ -51,7 +51,7 @@ const SideNav = () => {
             {projects &&
               projects.map((project) => (
                 <Link
-                  to={"projects/" + project.project_id}
+                  to={"project/" + project.project_id + '/details'}
                   className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2.5rem] rounded-[5px]"
                 >
                   <p className="ml-[1.5rem]">{project.title}</p>
@@ -70,7 +70,7 @@ const SideNav = () => {
             {archived &&
               archived.map((project) => (
                 <Link
-                  to={"projects/" + project.project_id}
+                  to={"project/" + project.project_id + '/details'}
                   className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2rem] rounded-[5px]"
                 >
                   <p className="ml-[1.5rem]">{project.title}</p>

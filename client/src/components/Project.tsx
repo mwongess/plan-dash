@@ -2,21 +2,22 @@ import { VscKebabVertical } from "react-icons/vsc";
 import { IProject } from "../types/project.types";
 import MoreOptions from "./Cards/MoreOptions";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Project: React.FC<{ project: IProject }> = ({ project }) => {
   const [showMoreOptions, setShowMoreOptions] = useState(false);
-
+  const navigate = useNavigate()
   const toggleMoreOptions = () => {
     setShowMoreOptions((prevState) => !prevState);
   };
 
-  const seeMoreProjectDetails = ()=> {
-    
+  const seeMoreProjectDetails = (project: IProject)=> {
+    navigate("project/"+ project.project_id +'/details')
   }
  
 
   return (
-    <div className="relative cursor-pointer" draggable>
+    <div className="relative  project" draggable >
       <div className="m-3 bg-[#29253d] rounded-lg">
         <div className=" p-3   ">
           <div className="flex justify-between items-center ">
@@ -48,7 +49,7 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
               <VscKebabVertical className="cursor-pointer" />
             </p>
           </div>
-          <div>
+          <div className="cursor-pointer" onClick={()=>seeMoreProjectDetails(project)}>
             <h4 className="my-2 font-bold">{project.title}</h4>
             <p>{project.description}</p>
           </div>

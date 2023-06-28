@@ -28,7 +28,7 @@ export const router = createBrowserRouter(
           <Route path="list" element={<ListView />} />
         </Route>
         <Route path="project/new" element={<NewProject />} />
-        <Route path="projects/:project_id" element={<ProjectDetails/>}/>
+        <Route path="project/:project_id/details" element={<ProjectDetails/>}/>
         <Route
           path="project/:project_id/assign/to/:user:id"
           element={<TaskSomeone />}
