@@ -28,7 +28,7 @@ export interface IProjectsContextType {
   projects: IProject[];
   getProjects: () => Promise<{ projects: IProject[]; message: string }>;
   newProject: (project: IProjectRequest) => Promise<IProjectRequest>;
-  updateProject: (project: IProject) => Promise<string | number>;
+  updateProject: (project: IProjectRequest, project_id: string) => Promise<string | number>;
   updateStatus: (params: {
     project_id: string;
     status: string;

@@ -54,7 +54,15 @@ export const newProject = async (
 //END
 
 //START UPDATE PROJECT
-export const updateProject = async (project: IProject) => {
+export const updateProject = async (project: IProjectRequest, project_id: string) => {
+  const res = await fetch("http://localhost:3000/projects", {
+    method: "PATCH",
+    headers:{
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(project)
+
+})
   return "";
 };
 //END

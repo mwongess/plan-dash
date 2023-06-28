@@ -14,6 +14,7 @@ import NewProject from "../components/NewProject/NewProject";
 import TaskSomeone from "../components/TaskSomeone";
 import Projects from "../pages/Projects";
 import ProjectDetails from "../components/ProjectDetails";
+import { ProjectLoader } from "../actions/project.loader";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +29,7 @@ export const router = createBrowserRouter(
           <Route path="list" element={<ListView />} />
         </Route>
         <Route path="project/new" element={<NewProject />} />
-        <Route path="project/:project_id/details" element={<ProjectDetails/>}/>
+        <Route path="project/:project_id/details" element={<ProjectDetails/>} loader={ProjectLoader}/>
         <Route
           path="project/:project_id/assign/to/:user:id"
           element={<TaskSomeone />}

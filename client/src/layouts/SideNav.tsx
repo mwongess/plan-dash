@@ -18,7 +18,9 @@ const SideNav = () => {
     <div className="h-[95vh] bg-[url('/proje.png')] bg-no-repeat bg-bottom bg-opacity-0">
       <div className=" sm:flex flex-col md:justify-between h-full px-2  ">
         <div>
-          <img className="h-[6rem]" src="/logo.png" alt="" />
+          <Link to="/">
+            <img className="h-[6rem] cursor-pointer" src="/logo.png" alt="" />
+          </Link>
           <div>
             <h3 className="flex justify-between">
               <span className="flex items-center gap-4">
@@ -30,7 +32,7 @@ const SideNav = () => {
               {favorites &&
                 favorites.map((favs) => (
                   <Link
-                    to={"project/" + favs.project_id + '/details'}
+                    to={"project/" + favs.project_id + "/details"}
                     className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2.5rem] rounded-[5px]"
                   >
                     <p className="ml-[1.5rem]">{favs.title}</p>
@@ -51,7 +53,7 @@ const SideNav = () => {
             {projects &&
               projects.map((project) => (
                 <Link
-                  to={"project/" + project.project_id + '/details'}
+                  to={"project/" + project.project_id + "/details"}
                   className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2.5rem] rounded-[5px]"
                 >
                   <p className="ml-[1.5rem]">{project.title}</p>
@@ -70,7 +72,7 @@ const SideNav = () => {
             {archived &&
               archived.map((project) => (
                 <Link
-                  to={"project/" + project.project_id + '/details'}
+                  to={"project/" + project.project_id + "/details"}
                   className="flex items-center cursor-pointer hover:bg-[#29253d] h-[2rem] rounded-[5px]"
                 >
                   <p className="ml-[1.5rem]">{project.title}</p>
