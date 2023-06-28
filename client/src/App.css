@@ -14,13 +14,13 @@ a.active{
     background:#fff; 
     padding:0 10px
 }
-.project:hover{
+/* .project:hover{
     border: 0.2px dashed white;
     padding: 1px !important;
     border-radius: 5px;
     transform: scale(1.0);
     transition: transform 0.3s ease-in-out;
-}
+} */
 @media screen and (max-width: 767px) {
     .clip-path{
         clip-path: none;
