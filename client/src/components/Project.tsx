@@ -1,45 +1,22 @@
-import { FaArchive, FaBatteryHalf, FaTrash, FaUserCheck } from "react-icons/fa";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { VscKebabVertical } from "react-icons/vsc";
-import { useState } from "react";
 import { IProject } from "../types/project.types";
 import MoreOptions from "./Cards/MoreOptions";
+import { useState } from "react";
 
 const Project: React.FC<{ project: IProject }> = ({ project }) => {
-  const [showMoreDetails, setShowMoreDetails] = useState(false);
+  const [showMoreOptions, setShowMoreOptions] = useState(false);
 
-  const toggleMoreDetails = () => {
-    setShowMoreDetails((prevState) => !prevState);
+  const toggleMoreOptions = () => {
+    setShowMoreOptions((prevState) => !prevState);
   };
 
-  const queryClient = useQueryClient();
-  const { archiveProject, updateStatus, deleteProject } = usePlanDashContext()!;
-
-  const deleteProjectMutation = useMutation({
-    mutationFn: (id: string | number) => deleteProject(id),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["projects"]);
-    },
-  });
-
-  const updateStatusMutation = useMutation({
-    mutationFn: (data: { project_id: string; status: string }) =>
-      updateStatus(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["projects"]);
-    },
-  });
-
-  const archiveProjectMutation = useMutation({
-    mutationFn: (project_id: string) => archiveProject(project_id),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["projects"]);
-    },
-  });
+  const seeMoreProjectDetails = ()=> {
+    
+  }
+ 
 
   return (
-    <div className="relative">
+    <div className="relative cursor-pointer" draggable>
       <div className="m-3 bg-[#29253d] rounded-lg">
         <div className=" p-3   ">
           <div className="flex justify-between items-center ">
@@ -67,7 +44,7 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
                 {project.scope}
               </p>
             </div>
-            <p className="" onClick={toggleMoreDetails}>
+            <p className="" onClick={toggleMoreOptions}>
               <VscKebabVertical className="cursor-pointer" />
             </p>
           </div>
@@ -81,10 +58,10 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
           <p className="flex items-center">+ Add Subtask</p>
         </div>
       </div>
-      {showMoreDetails && (
+      {showMoreOptions && (
         <MoreOptions
           project={project}
-          setShowMoreDetails={setShowMoreDetails}
+          setShowMoreOptions={setShowMoreOptions}
         />
       )}
     </div>

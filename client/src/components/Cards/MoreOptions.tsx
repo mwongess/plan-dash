@@ -5,8 +5,8 @@ import { usePlanDashContext } from "../../contexts/PlanDashContext";
 
 const MoreOptions: React.FC<{
   project: IProject;
-  setShowMoreDetails: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ project, setShowMoreDetails }) => {
+  setShowMoreOptions: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ project, setShowMoreOptions }) => {
   const queryClient = useQueryClient();
   const { archiveProject, updateStatus, deleteProject } = usePlanDashContext()!;
 
@@ -44,8 +44,8 @@ const MoreOptions: React.FC<{
         </p>
         <p
           onClick={() => {
-            archiveProjectMutation.mutate(project.project_id),
-              setShowMoreDetails(false);
+            archiveProjectMutation.mutate(project.project_id);
+              setShowMoreOptions(false);
           }}
           className="cursor-pointer flex items-center gap-[0.5rem]"
         >
@@ -59,7 +59,7 @@ const MoreOptions: React.FC<{
                 project_id: project.project_id,
                 status: e.target.value,
               } as unknown as { project_id: string; status: string }),
-                setShowMoreDetails(false);
+                setShowMoreOptions(false);
             }}
             className="bg-transparent border rounded w-fit "
             name="status"
