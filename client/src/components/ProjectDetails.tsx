@@ -15,6 +15,8 @@ const ProjectDetails = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
+  const { deleteProject } = usePlanDashContext()!;
+
   const project = useLoaderData() as IProject;
   useEffect(() => {
     setTitle(project.title);
@@ -22,7 +24,7 @@ const ProjectDetails = () => {
   }, [project]);
 
   const navigate = useNavigate();
-  
+
   const { register, handleSubmit, reset } = useForm({
     resolver: yupResolver(projectSchema),
   });
@@ -44,6 +46,13 @@ const ProjectDetails = () => {
     reset();
   };
 
+  const deleteProjectMutation = useMutation({
+    mutationFn: (id: string | number) => deleteProject(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["projects"]);
+      navigate("/dashboard");
+    },
+  });
   return (
     <div className="">
       <div></div>
@@ -93,27 +102,38 @@ const ProjectDetails = () => {
             <SaveBtn />
           </div>
         </div>
-     
       </form>
       <div>
-          <h1 className="text-xl mb-[0.7rem]">Danger Zone</h1>
-          <div className="flex flex-col gap-[1rem] border border-[red] rounded p-3 ">
-          <div className="flex items-center justify-between" >
-              <div >
-                <h3 className="text-lg">Archive this project</h3>
-                <p>Mark this repository as archived and read-only.</p>
-              </div>
-              <button className="rounded p-1 text-red-800 bg-red-200">Archive this Project</button>
+        <h1 className="text-xl mb-[0.7rem]">Danger Zone</h1>
+        <div className="flex flex-col gap-[1rem] border border-[red] rounded p-3 ">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-lg">Archive this project</h3>
+              <p>Mark this repository as archived and read-only.</p>
             </div>
-            <div className="flex items-center justify-between border-t border-[#393649]" >
-              <div >
-                <h3 className="text-lg">Delete this project</h3>
-                <p>Once you delete a repository, there is no going back. Please be certain.</p>
-              </div>
-              <button className=" rounded p-1 text-red-800 bg-red-200">Delete this Project</button>
+            <button className="rounded p-1 text-red-800 bg-red-200">
+              Archive this Project
+            </button>
+          </div>
+          <div className="flex items-center justify-between border-t border-[#393649]">
+            <div>
+              <h3 className="text-lg">Delete this project</h3>
+              <p>
+                Once you delete a repository, there is no going back. Please be
+                certain.
+              </p>
             </div>
+            <button
+              className=" rounded p-1 text-red-800 bg-red-200"
+              onClick={() =>
+                deleteProjectMutation.mutate(project.project_id as string)
+              }
+            >
+              Delete this Project
+            </button>
           </div>
         </div>
+      </div>
     </div>
   );
 };
