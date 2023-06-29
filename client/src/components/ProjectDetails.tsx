@@ -70,7 +70,7 @@ const ProjectDetails = () => {
       <h1 className="text-xl mb-[0.7rem]">Update Project</h1>
       <form
         action=""
-        className="bg-transparent flex flex-col  gap-[1.3rem] border border-[#fb9500] rounded mb-[1rem] p-3"
+        className="bg-transparent flex flex-col  gap-[1.3rem] rounded mb-[1rem] p-3"
         onSubmit={handleSubmit(onSubmitHandler)}
       >
         <div>
@@ -109,7 +109,7 @@ const ProjectDetails = () => {
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-lg">Archive this project</h3>
-              <p>Mark this repository as archived and read-only.</p>
+              <p>Mark this project as archived and read-only.</p>
             </div>
             <button className="rounded p-1 text-red-800 bg-red-200">
               Archive this Project
@@ -119,7 +119,7 @@ const ProjectDetails = () => {
             <div>
               <h3 className="text-lg">Delete this project</h3>
               <p>
-                Once you delete a repository, there is no going back. Please be
+                Once you delete a project, there is no going back. Please be
                 certain.
               </p>
             </div>

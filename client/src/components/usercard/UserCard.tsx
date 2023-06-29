@@ -8,7 +8,7 @@ const UserCard = () => {
     navigate("/auth/login");
   };
   return (
-    <div className="absolute top-0 left-0 z-[100] mt-[4.5rem]  user-card flex flex-col w-full justify-center bg-[#0d1117]">
+    <div className="absolute top-0 left-0 z-[100] mt-[3.3rem]  user-card flex flex-col w-full justify-center bg-[#0d1117]">
       <button className="value flex items-center gap-[5px] cursor-pointer p-[10px] border-none bg-[transparent] text-[white]">
         <svg
           data-name="Layer 2"

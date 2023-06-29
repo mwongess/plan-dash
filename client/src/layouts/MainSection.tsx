@@ -10,9 +10,10 @@ const MainSection = () => {
     <div className="">
       <div className="flex flex-col gap-4 ">
         <div className="bg-[url('/proj.pn')] bg-no-repeat border-b border-[#393649] bg-right bg-auto ">
-          <div className="flex justify-between">
-            <div>
-              <SearchInput />
+          <div className="flex justify-between py-4">
+            <div >
+              {/* <SearchInput /> */}
+              <h1 className="text-2xl text-gray-200">{new Date().toDateString().toLocaleUpperCase()}</h1>
             </div>
             <div className="flex items-center gap-[2rem] relative">
               {/* <div className="">
@@ -39,11 +40,11 @@ const MainSection = () => {
         </div>
 
         <div className="hidden md:flex  gap-x-8 border-b border-[#393649] pb-3">
-          <NavLink to="" className="">My Organisations</NavLink>
+          <NavLink to="my/organisations" className="">My Organisations</NavLink>
           <Link to="">Projects</Link>
-          <Link to="">Team</Link>
-          <Link to="">Timeline</Link>
-          <Link to="">Overview</Link>
+          <Link to="my/teams">Team</Link>
+          <Link to="timeline">Timeline</Link>
+          <Link to="overview">Overview</Link>
         </div>
         <div className="">
           <Outlet />

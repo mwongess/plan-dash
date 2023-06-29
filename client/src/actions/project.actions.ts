@@ -1,5 +1,4 @@
-import { log } from "console";
-import { IProject, IProjectRequest } from "../types/project.types";
+import {IProjectRequest } from "../types/project.types";
 import { getLoggedInUser } from "./auth.actions";
 
 const URL = "http://localhost:3000/projects/"; //Backend API
@@ -55,10 +54,11 @@ export const newProject = async (
 
 //START UPDATE PROJECT
 export const updateProject = async (project: IProjectRequest, project_id: string) => {
-  const res = await fetch("http://localhost:3000/projects", {
+  const res = await fetch("http://localhost:3000/projects/" + project_id +"/update", {
     method: "PATCH",
     headers:{
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        token: token
     },
     body: JSON.stringify(project)
 

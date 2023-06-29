@@ -15,7 +15,7 @@ const SideNav = () => {
   }
 
   return (
-    <div className="h-[95vh] bg-[url('/proje.png')] bg-no-repeat bg-bottom bg-opacity-0">
+    <div className="h-[95vh] bg-[url('/proje.png')] bg-no-repeat bg-bottom bg-opacity-0 text-gray-100">
       <div className=" sm:flex flex-col md:justify-between h-full px-2  ">
         <div>
           <Link to="/">
