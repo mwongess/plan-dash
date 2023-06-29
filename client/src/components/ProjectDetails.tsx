@@ -54,7 +54,7 @@ const ProjectDetails = () => {
     },
   });
   return (
-    <div className="">
+    <div className="text-gray-400">
       <div></div>
       <div>
         {updateProjectMutation.isLoading ? (
@@ -70,7 +70,7 @@ const ProjectDetails = () => {
       <h1 className="text-xl mb-[0.7rem]">Update Project</h1>
       <form
         action=""
-        className="bg-transparent flex flex-col  gap-[1.3rem] rounded mb-[1rem] p-3"
+        className="bg-transparent flex flex-col  gap-[1.3rem] rounded mb-[1rem]"
         onSubmit={handleSubmit(onSubmitHandler)}
       >
         <div>
@@ -105,9 +105,9 @@ const ProjectDetails = () => {
       </form>
       <div>
         <h1 className="text-xl mb-[0.7rem]">Danger Zone</h1>
-        <div className="flex flex-col gap-[1rem] border border-[red] rounded p-3 ">
-          <div className="flex items-center justify-between">
-            <div>
+        <div className="flex flex-col gap-[1rem] border border-[red] rounded">
+          <div className="flex items-center justify-between p-3">
+            <div className="">
               <h3 className="text-lg">Archive this project</h3>
               <p>Mark this project as archived and read-only.</p>
             </div>
@@ -115,8 +115,8 @@ const ProjectDetails = () => {
               Archive this Project
             </button>
           </div>
-          <div className="flex items-center justify-between border-t border-[#393649]">
-            <div>
+          <div className="flex items-center justify-between border-t border-[#393649] p-3">
+            <div className="">
               <h3 className="text-lg">Delete this project</h3>
               <p>
                 Once you delete a project, there is no going back. Please be

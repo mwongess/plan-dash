@@ -17,6 +17,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import Overview from "../components/Overview";
+import Timeline from "../components/Timeline";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,17 +27,21 @@ export const router = createBrowserRouter(
       <Route path="auth/login" element={<LoginForm />} />
       <Route path="auth/signup" element={<SignUp />} />
       <Route path="dashboard" element={<Dashboard />}>
-        <Route path="my/organisations" element={<Organizations/>}/>
-        <Route path="my/teams" element={<Team/>}/>
+        <Route path="my/organisations" element={<Organizations />} />
+        <Route path="my/teams" element={<Team />} />
         <Route path="" element={<Projects />}>
           <Route path="" element={<BoardView />} />
           <Route path="table" element={<TableView />} />
           <Route path="list" element={<ListView />} />
         </Route>
-        <Route path="timeline"/>
-        <Route path="overview"/>
+        <Route path="timeline" element={<Timeline/>}/>
+        <Route path="overview" element={<Overview />} />
         <Route path="project/new" element={<NewProject />} />
-        <Route path="project/:project_id/details" element={<ProjectDetails/>} loader={ProjectLoader}/>
+        <Route
+          path="project/:project_id/details"
+          element={<ProjectDetails />}
+          loader={ProjectLoader}
+        />
         <Route
           path="project/:project_id/assign/to/:user:id"
           element={<TaskSomeone />}

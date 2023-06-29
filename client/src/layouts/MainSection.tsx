@@ -7,7 +7,7 @@ import { useState } from "react";
 const MainSection = () => {
   const [show, setShow] = useState(false);
   return (
-    <div className="">
+    <div className="text-gray-200">
       <div className="flex flex-col gap-4 ">
         <div className="bg-[url('/proj.pn')] bg-no-repeat border-b border-[#393649] bg-right bg-auto ">
           <div className="flex justify-between py-4">

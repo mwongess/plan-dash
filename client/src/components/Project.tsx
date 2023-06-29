@@ -18,7 +18,7 @@ const Project: React.FC<{ project: IProject }> = ({ project }) => {
 
   return (
     <div className="relative  project" draggable >
-      <div className="m-3 bg-[#29253d] rounded-lg">
+      <div className="m-3 bg-[#585892] rounded-lg">
         <div className=" p-3   ">
           <div className="flex justify-between items-center ">
             <div className="flex gap-4">

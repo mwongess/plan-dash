@@ -33,7 +33,7 @@ const NewProject = () => {
   };
 
   return (
-    <div className="">
+    <div className="text-gray-400">
       <div>
         {newProjectMutation.isLoading ? (
           // "Creating Project..."
