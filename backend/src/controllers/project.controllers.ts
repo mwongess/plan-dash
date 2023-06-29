@@ -130,3 +130,20 @@ export const ArchiveProject = async(req: Request, res: Response)=>{
     res.json({error: error.message})
   }
 }
+
+export const UpdateProject = async(req:Request, res:Response)=> {
+  try {
+    const {project_id} = req.params 
+    const {title,description} =req.body 
+    const { recordset } = await db.executeProcedure("GetProject", {
+      project_id,
+    });
+    if (!recordset[0]) {
+      return res.status(404).json({ message: "Project not found" });
+    }
+    await db.executeProcedure("UpdateProject", {project_id,title,description})
+    res.json({message: "Project has been updated"})
+  } catch (error:any) {
+    res.json({error: error})
+  }
+}
