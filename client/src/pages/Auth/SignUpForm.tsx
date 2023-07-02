@@ -26,9 +26,8 @@ export const SignUp = () => {
     resolver: yupResolver(SignupSchema),
   });
 
+  // Send data to server
   const onSubmitHandler = async (data: IsignupData) => {
-    // Send data to server
-
     const dataFromServer = await signup(data);
     if (dataFromServer.message) {
       toast(dataFromServer.message);
@@ -96,7 +95,6 @@ export const SignUp = () => {
               <div className="group mb-[1.5rem] ">
                 <input
                   {...register("username")}
-                  required
                   type="text"
                   className="input w-full"
                 />
@@ -108,7 +106,6 @@ export const SignUp = () => {
               <div className="group mb-[1.5rem] ">
                 <input
                   {...register("email")}
-                  required
                   type="email"
                   className="input w-full"
                 />
@@ -120,7 +117,6 @@ export const SignUp = () => {
               <div className="group mb-[1.5rem] ">
                 <input
                   {...register("password")}
-                  required
                   type="password"
                   className="input w-full"
                 />
@@ -132,14 +128,13 @@ export const SignUp = () => {
               <div className="group mb-[1.5rem] ">
                 <input
                   {...register("confirmpass")}
-                  required
                   type="password"
                   className="input w-full"
                 />
                 <span className="highlight"></span>
                 <span className="bar w-full"></span>
                 <label>Confirm Password</label>
-              <p className="text-[red]">{errors.confirmpass?.message}</p>
+                <p className="text-[red]">{errors.confirmpass?.message}</p>
               </div>
 
               <button className="auth-btn flex items-center justify-center border-none   text-white h-[2.55rem] w-full mb-2 rounded">

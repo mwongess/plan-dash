@@ -17,15 +17,20 @@ export const LoginForm = () => {
 
   const navigate = useNavigate();
 
-  const { register, handleSubmit, reset } = useForm<ILoginData>({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ILoginData>({
     resolver: yupResolver(LoginSchema),
   });
 
+  // Send data to server
   const onSubmitHandler = async (data: ILoginData) => {
-    // Send data to server
     console.log(data);
     const dataFromServer = await login(data);
-   
+
     if (dataFromServer.error) {
       setError(dataFromServer.error);
     } else {
@@ -34,7 +39,7 @@ export const LoginForm = () => {
     if (dataFromServer.token) {
       const { token } = dataFromServer;
       localStorage.setItem("user", JSON.stringify(token));
-      alert("Login Success")
+      toast("Login Success");
       navigate("/dashboard");
     }
   };
@@ -73,24 +78,24 @@ export const LoginForm = () => {
           <div className="group mb-[1.5rem] ">
             <input
               {...register("email")}
-              required
               type="email"
               className="input w-full"
             />
             <span className="highlight "></span>
             <span className="bar w-full"></span>
             <label>Email</label>
+            <p className="text-[red]">{errors.email?.message}</p>
           </div>
           <div className="group mb-[2.5rem] ">
             <input
               {...register("password")}
-              required
               type="password"
               className="input w-full"
             />
             <span className="highlight"></span>
             <span className="bar w-full"></span>
             <label>Password</label>
+            <p className="text-[red]">{errors.password?.message}</p>
           </div>
           <button className="auth-btn border-none  flex items-center justify-center   text-white h-[2.55rem] w-full mb-[1.5rem] rounded">
             Login
