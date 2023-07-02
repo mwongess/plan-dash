@@ -7,7 +7,7 @@ import { IsignupData } from "../../types/auth.types";
 
 import "./auth.css";
 import { FaBitbucket, FaGithub, FaGitlab } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signup } from "../../actions/auth.actions";
 import Error from "../../components/Error";
 import { ToastContainer, toast } from "react-toastify";
@@ -38,7 +38,9 @@ export const SignUp = () => {
       reset();
     }
   };
-
+  useEffect(() => {
+    toast("Please continue with email!");
+  }, []);
   return (
     <div className="md:flex justify-center items-center  sm:h-screen">
       <div className="clip-path w-full md:w-[50%] h-[15%] md:h-full bg-[#03103c] flex items-center justify-center">
