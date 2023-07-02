@@ -1,13 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import { ILoginData, IsignupData } from "../types/auth.types";
+import { apiDomain } from "../utils/api";
 
-// export const onSubmitHandler = (data: ILoginData | IsignupData) => {
-// Send data to server
-//   console.log(data)
-//   reset();
-// };
-
-const URL = "http://localhost:3000/auth/";
+const URL = apiDomain + "auth/";
 
 export const getLoggedInUser = () => {
   const user: string = JSON.parse(localStorage.getItem("user") as string);

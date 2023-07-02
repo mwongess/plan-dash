@@ -1,7 +1,8 @@
 import {IProjectRequest } from "../types/project.types";
+import { apiDomain } from "../utils/api";
 import { getLoggedInUser } from "./auth.actions";
 
-const URL = "http://localhost:3000/projects/"; //Backend API
+const URL = apiDomain + "projects/"; 
 
 const token = getLoggedInUser();
 
@@ -54,7 +55,7 @@ export const newProject = async (
 
 //START UPDATE PROJECT
 export const updateProject = async (project: IProjectRequest, project_id: string) => {
-  const res = await fetch("http://localhost:3000/projects/" + project_id +"/update", {
+  const res = await fetch(URL + project_id +"/update", {
     method: "PATCH",
     headers:{
         "Content-Type": "application/json",
