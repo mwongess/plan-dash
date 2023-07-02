@@ -3,7 +3,7 @@ import { apiDomain } from "../utils/api";
 
 const URL = apiDomain + "auth/";
 
-export const getLoggedInUser = () => {
+export const getLoggedInUser = (): string => {
   const user: string = JSON.parse(localStorage.getItem("user") as string);
   return user;
 };
@@ -22,7 +22,7 @@ export const signup = async (user: IsignupData) => {
     throw new Error("Network response was not ok!");
   }
   const data = res.json();
-  return data
+  return data;
 };
 
 export const login = async (user: ILoginData) => {
@@ -40,6 +40,3 @@ export const login = async (user: ILoginData) => {
 
   return data;
 };
-
-
-

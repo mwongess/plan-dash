@@ -1,10 +1,3 @@
-import React, {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
 import { IProject, IProjectsContextType } from "../types/project.types";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -15,7 +8,13 @@ import {
   updateProject,
   updateStatus,
 } from "../actions/project.actions";
-import { getLoggedInUser } from "../actions/auth.actions";
+import React, {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 export const PlanDashContext = createContext<IProjectsContextType | undefined>(
   undefined
@@ -34,8 +33,7 @@ export const PlanDashProvider: React.FC<{ children: ReactNode }> = ({
     Error
   >({
     queryKey: ["projects"],
-    queryFn:  getProjects
-   
+    queryFn: getProjects,
   });
 
   useEffect(() => {

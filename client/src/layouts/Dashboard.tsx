@@ -1,4 +1,4 @@
-import {  useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import MainSection from "./MainSection";
 import SideNav from "./SideNav";
@@ -15,10 +15,9 @@ const Dashboard = () => {
       return navigate("/auth/login");
     }
   }, [user]);
-  
-  if (user) {
 
-      queryClient.invalidateQueries(["projects"]);//Trigger refetch
+  if (user) {
+    queryClient.invalidateQueries(["projects"]); //Trigger refetch
     return (
       <>
         <div className="sm:flex justify-between min-h-screen bg-[#0f172a] text-white px-4 pt-4 pb-[6rem]">
