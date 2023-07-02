@@ -10,11 +10,13 @@ import { FaBitbucket, FaGithub, FaGitlab } from "react-icons/fa";
 import { useState } from "react";
 import { signup } from "../../actions/auth.actions";
 import Error from "../../components/Error";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const SignUp = () => {
   const [showOptions, setShowOptions] = useState(true);
   const [showForm, setShowForm] = useState(false);
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
   const {
     register,
     handleSubmit,
@@ -24,17 +26,18 @@ export const SignUp = () => {
     resolver: yupResolver(SignupSchema),
   });
 
-  const onSubmitHandler = async(data: IsignupData) => {
+  const onSubmitHandler = async (data: IsignupData) => {
     // Send data to server
 
     const dataFromServer = await signup(data);
-    if(dataFromServer.error){
-      setError(dataFromServer.error)
-    }else{
-      
+    if (dataFromServer.message) {
+      toast(dataFromServer.message);
+    }
+    if (dataFromServer.error) {
+      setError(dataFromServer.error);
+    } else {
       reset();
     }
-  
   };
 
   return (
@@ -42,6 +45,7 @@ export const SignUp = () => {
       <div className="clip-path w-full md:w-[50%] h-[15%] md:h-full bg-[#03103c] flex items-center justify-center">
         <img className="h-[6rem] md:h-auto" src="/se.png" alt="" />
       </div>
+      <ToastContainer />
       <form
         onSubmit={handleSubmit(onSubmitHandler)}
         className="flex flex-col sm:items-center sm:justify-center md:w-[50%] h-full p-4"
@@ -99,6 +103,7 @@ export const SignUp = () => {
                 <span className="highlight"></span>
                 <span className="bar w-full"></span>
                 <label>Name</label>
+                <p className="text-[red]">{errors.username?.message}</p>
               </div>
               <div className="group mb-[1.5rem] ">
                 <input
@@ -110,6 +115,7 @@ export const SignUp = () => {
                 <span className="highlight"></span>
                 <span className="bar w-full"></span>
                 <label>Email</label>
+                <p className="text-[red]">{errors.email?.message}</p>
               </div>
               <div className="group mb-[1.5rem] ">
                 <input
@@ -121,6 +127,7 @@ export const SignUp = () => {
                 <span className="highlight"></span>
                 <span className="bar w-full"></span>
                 <label>Password</label>
+                <p className="text-[red]">{errors.password?.message}</p>
               </div>
               <div className="group mb-[1.5rem] ">
                 <input
@@ -132,7 +139,9 @@ export const SignUp = () => {
                 <span className="highlight"></span>
                 <span className="bar w-full"></span>
                 <label>Confirm Password</label>
+              <p className="text-[red]">{errors.confirmpass?.message}</p>
               </div>
+
               <button className="auth-btn flex items-center justify-center border-none   text-white h-[2.55rem] w-full mb-2 rounded">
                 Sign up
                 <div className="arrow-wrapper">
@@ -141,7 +150,9 @@ export const SignUp = () => {
               </button>
               <div>
                 <span>
-                  Or Login <Link to="/auth/login">here</Link>
+                  <Link to="/auth/login " className="text-[blue]">
+                    Or Login here
+                  </Link>
                 </span>
               </div>
             </>

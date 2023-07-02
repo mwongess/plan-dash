@@ -9,20 +9,25 @@ export const getLoggedInUser = (): string => {
 };
 
 export const signup = async (user: IsignupData) => {
-  const { username, email, password } = user;
-  const name = username;
-  const res = await fetch(`${URL}signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name, email, password }),
-  });
-  if (!res.ok) {
-    throw new Error("Network response was not ok!");
+  try {
+    const { username, email, password } = user;
+    const name = username;
+    const res = await fetch(`${URL}signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, password }),
+    });
+    if (!res.ok) {
+      throw new Error("Network response was not ok!");
+    }
+    const data = res.json();
+
+    return data;
+  } catch (error: any) {
+    throw new Error(error);
   }
-  const data = res.json();
-  return data;
 };
 
 export const login = async (user: ILoginData) => {

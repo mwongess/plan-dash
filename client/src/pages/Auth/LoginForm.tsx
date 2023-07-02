@@ -9,12 +9,10 @@ import { ILoginData } from "../../types/auth.types";
 import { login } from "../../actions/auth.actions";
 import Error from "../../components/Error";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./auth.css";
-import { useQueryClient } from "@tanstack/react-query";
-
 export const LoginForm = () => {
-  const queryClient = useQueryClient();
-
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
@@ -27,18 +25,18 @@ export const LoginForm = () => {
     // Send data to server
     console.log(data);
     const dataFromServer = await login(data);
+   
     if (dataFromServer.error) {
       setError(dataFromServer.error);
-      setTimeout(() => setError(""), 8000);
     } else {
       reset();
     }
     if (dataFromServer.token) {
       const { token } = dataFromServer;
       localStorage.setItem("user", JSON.stringify(token));
+      alert("Login Success")
       navigate("/dashboard");
     }
-    // queryClient.invalidateQueries(["projects"])
   };
 
   return (
@@ -46,6 +44,7 @@ export const LoginForm = () => {
       <div className="clip-path w-full h-[15%] md:h-full sm:w-[50%] flex items-center justify-center bg-[#03103c] ">
         <img className="h-[6rem] md:h-auto" src="/se.png" alt="" />
       </div>
+      <ToastContainer />
       <form
         className="sm:w-[50%]  flex items-center justify-center p-4"
         onSubmit={handleSubmit(onSubmitHandler)}
@@ -101,9 +100,8 @@ export const LoginForm = () => {
           </button>{" "}
           <div>
             <span>
-              Or SignUp{" "}
-              <Link to="/auth/signup" className="">
-                here
+              <Link to="/auth/signup" className="text-[blue]">
+                Or SignUp here
               </Link>
             </span>
           </div>

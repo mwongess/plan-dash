@@ -1,14 +1,14 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useQueryClient, useMutation } from "@tanstack/react-query";
-import { useForm, FieldValues } from "react-hook-form";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+import { IProject, IProjectRequest } from "../types/project.types";
 import { usePlanDashContext } from "../contexts/PlanDashContext";
 import { projectSchema } from "../schemas/project.schema";
-import { IProject, IProjectRequest } from "../types/project.types";
+import { useForm, FieldValues } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect, useState } from "react";
 import Loading from "./Loading/Loading";
 import SaveBtn from "./SaveBtn/SaveBtn";
 import Error from "./Error";
-import { useEffect, useState } from "react";
 
 const ProjectDetails = () => {
   const { project_id } = useParams();
